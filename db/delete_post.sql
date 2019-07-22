@@ -1,4 +1,5 @@
-delete from posts 
-where id = $1; 
+DELETE FROM posts 
+WHERE id=$1; 
 
-select * from postswhere user_id = $2; 
+SELECT * FROM posts
+WHERE user_id=$2;
