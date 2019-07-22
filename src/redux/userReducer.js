@@ -1,5 +1,5 @@
 import axios from 'axios'; 
-import { SIGNUP } from './actionTypes';
+import { SIGNUP, LOGIN } from './actionTypes';
 
 const initialState = {
     user: {}, 
@@ -18,6 +18,16 @@ export const signup = (username, password, first_name, last_name, email) => {
     }; 
 }; 
 
+export const login = (username, password) => {
+    let data = axios
+    .post('/api/login', { username, password })
+    .then(res => res.data); 
+    return {
+        type: LOGIN, 
+        payload: data
+    }; 
+}; 
+
 export default function(state = initialState, action) {
     let { type, payload } = action; 
     switch (type) {
@@ -30,6 +40,15 @@ export default function(state = initialState, action) {
         }; 
         case SIGNUP + '_REJECTED': 
         return { ...state, error: payload }; 
+        case LOGIN + '_FULFILLED':
+            return {
+                ...state, 
+                user: payload, 
+                redirect: false, 
+                error: false
+            }; 
+        case LOGIN + '_REJECTED':
+            return { ...state, error: payload }; 
         default: 
         return state; 
     }

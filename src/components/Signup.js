@@ -1,4 +1,6 @@
 import React, { Component } from 'react'; 
+import { connect } from 'react-redux'; 
+import { signup } from '../redux/userReducer'; 
 
 class Signup extends Component {
     constructor() {
@@ -8,14 +10,17 @@ class Signup extends Component {
             password: '', 
             first_name: '', 
             last_name: '', 
-            email: '', 
-            password: ''
+            email: ''
         }
     }
 
     handleChange = e => {
         let { name, value } = e.target; 
         this.setState({ [name]: value }); 
+    }; 
+
+    signupUser = () => {
+        this.props.signup(this.state.username, this.state.password, this.state.first_name, this.state.last_name, this.state.email); 
     }; 
 
     render(){
@@ -82,4 +87,8 @@ class Signup extends Component {
     }
 }
 
-export default Signup; 
+function mapStateToProps(state) {
+    return state.user; 
+}
+
+export default connect(mapStateToProps, { signup }) (Signup); 
