@@ -1,6 +1,7 @@
 import React, { Component } from 'react'; 
 import { connect } from 'react-redux'; 
 import { signup } from '../redux/userReducer'; 
+import { Redirect } from 'react-router-dom'; 
 
 class Signup extends Component {
     constructor() {
@@ -25,6 +26,8 @@ class Signup extends Component {
 
     render(){
         let { username, password, first_name, last_name, email} = this.state; 
+        let { user } = this.props; 
+        if (user.loggedIn) return <Redirect to="/" />
         return (
             <div className="display-container">
                 <div className="box-medium">
