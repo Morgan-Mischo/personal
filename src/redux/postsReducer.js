@@ -1,5 +1,5 @@
 import axios from 'axios'; 
-import { GET_POSTS, DELETE_POST } from './actionTypes'; 
+import { GET_POSTS, DELETE_POST, EDIT_POST } from './actionTypes'; 
 
 const initialState = {
     posts: [], 
@@ -22,6 +22,16 @@ export function deletePost(postId) {
     }; 
 }
 
+export function editPost(postId, newHeight, newWeight, newCalories, newDiet, newWorkout, newGoals, newPhoto){
+    let data = axios
+    .put(`/api/posts/edit/${postId}`, { newHeight, newWeight, newCalories, newDiet, newWorkout, newGoals, newPhoto })
+    .then(res => res.data); 
+    return {
+        type: EDIT_POST, 
+        payload: data
+    }; 
+}
+
 export default function postsReducer(state = initialState, action) {
     let { type, payload } = action; 
     switch(type) {
@@ -30,6 +40,8 @@ export default function postsReducer(state = initialState, action) {
         case GET_POSTS + '_REJECTED':
             return { ...state, error: payload };
             case DELETE_POST + '_FULFILLED': 
+            return { ...state, posts: payload }; 
+            case EDIT_POST + '_FULFILLED': 
             return { ...state, posts: payload }; 
         default: 
         return state; 

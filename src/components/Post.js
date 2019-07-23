@@ -1,5 +1,5 @@
 import React, { Component } from 'react'; 
-import { deletePost } from 'postReducer.js'; 
+import { deletePost, editPost } from 'postReducer.js'; 
 
 class Post extends Component{
     constructor(props) {
@@ -21,13 +21,37 @@ class Post extends Component{
         this.setState({ [name]: value }); 
     }; 
 
-
     flipEdit = () => this.setState({ editing: !this.state.editing }); 
+
+    save = () => {
+        let { id, editPost } = this.props; 
+        let { newHeight, newWeight, newCalories, newDiet, newWorkout, newGoals, newPhoto } = this.state; 
+        editPost(id, newHeight, newWeight, newCalories, newDiet, newWorkout, newGoals, newPhoto); 
+    }; 
 
     delete = () => {
         let { id, deletePost } = this.props; 
         deletePost(id); 
     }; 
+
+    componentDidUpdate(prevProps){
+        let { height, weight, calories, diet, workout, goals, photo } = prevProps; 
+        if(height !== this.props.height || weight !== this.props.weight 
+            || calories !== this.props.calories || diet !== this.props.diet 
+            || workout !== this.props.workout || goals !== this.props.goals 
+            || photo !== this.props.photo) {
+            this.setState({
+                newHeight: height, 
+                newWeight: weight, 
+                newCalories: calories, 
+                newDiet: diet, 
+                newWorkout: workout, 
+                newGoals: goals, 
+                newPhoto: photo, 
+                editing: false
+            })
+        }
+    }
 
 
     render(){
@@ -73,9 +97,19 @@ class Post extends Component{
                         name="newGoals"
                         className="input full-width"
                         />
+                        <img
+                        value={newPhoto}
+                        onChange={this.handleChange}
+                        name="newPhoto"
+                        className="input full-width"
+                        alt="Loading"
+                        />
                         <div>
                             <button onClick={this.flipEdit} className="btn warning-btn">
                                 Cancel
+                            </button>
+                            <button onClick={this.save} className="btn normal-btn">
+                                Save
                             </button>
                         </div>
                         </div>
