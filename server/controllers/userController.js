@@ -31,8 +31,12 @@ module.exports = {
         res.send(req.session.user); 
     }, 
 
-    async logout(req, res){
+    logout(req, res){
         req.session.destroy(); 
         res.sendStatus(200); 
+    }, 
+
+    getUser(req, res) {
+        res.send(req.session.user); 
     }
-}
+}; 
