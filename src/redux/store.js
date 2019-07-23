@@ -8,4 +8,4 @@ const rootReducer = combineReducers({
     posts: postsReducer
 }); 
 
-export default createStore(userReducer, applyMiddleware(promiseMiddleware)); 
+export default createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__(applyMiddleware(promiseMiddleware)))
