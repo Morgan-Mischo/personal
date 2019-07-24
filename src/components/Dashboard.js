@@ -1,5 +1,5 @@
 import React, { Component } from 'react'; 
-import { Redirect } from 'react-router-dom'; 
+import { Redirect, Link } from 'react-router-dom'; 
 import { connect } from 'react-redux'; 
 import { getUser } from '../redux/userReducer'; 
 import Posts from './Posts'; 
@@ -18,10 +18,15 @@ class Dashboard extends Component {
             <div className='display-container'>
                 <h3>Posts</h3>
                 <Posts />
-                
+                <Link to={{ pathname: '/search'}}>
                 <button className="search">Search</button>
+                </Link>
+                <Link to={{ pathname: '/profile'}}>
                 <button className="profile">Profile</button>
+                </Link>
+                <Link to={{ pathname: '/camera'}}>
                 <button className="camera">Camera</button>
+                </Link>
             </div>
         ); 
     }

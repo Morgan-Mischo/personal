@@ -4,9 +4,6 @@ import { getPosts } from '../redux/postsReducer';
 import Post from './Post'; 
 
 class Posts extends Component {
-    constructor() {
-        super(); 
-    }
 
     componentDidMount(){
         let { getPosts, posts, userId } = this.props; 
