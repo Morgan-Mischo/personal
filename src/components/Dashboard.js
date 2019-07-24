@@ -18,6 +18,10 @@ class Dashboard extends Component {
             <div className='display-container'>
                 <h3>Posts</h3>
                 <Posts />
+                
+                <button className="search">Search</button>
+                <button className="profile">Profile</button>
+                <button className="camera">Camera</button>
             </div>
         ); 
     }

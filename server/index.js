@@ -32,7 +32,7 @@ app.get('/api/user', authCheck,  uc.getUser);
 
 //post endpoints
 app.get('/api/posts/:userId', pc.getPosts); 
-app.delete('/api/posts/::postId', pc.deletePost); 
+app.delete('/api/posts/:postId', pc.deletePost); 
 app.put('/api/posts/edit/:postId', pc.editPost); 
 app.post('/api/posts', pc.savePost); 
 

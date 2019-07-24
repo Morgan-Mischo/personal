@@ -1,2 +1,2 @@
-SELECT * FROM delete_post.sql
+SELECT * FROM posts
 WHERE user_id=$1; 

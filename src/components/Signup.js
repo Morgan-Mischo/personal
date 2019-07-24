@@ -1,7 +1,7 @@
 import React, { Component } from 'react'; 
 import { connect } from 'react-redux'; 
 import { signup } from '../redux/userReducer'; 
-import { Redirect } from 'react-router-dom'; 
+import { Redirect, Link } from 'react-router-dom'; 
 
 class Signup extends Component {
     constructor() {
@@ -21,6 +21,7 @@ class Signup extends Component {
     }; 
 
     signupUser = () => {
+        console.log("hitting signup")
         this.props.signup(this.state.username, this.state.password, this.state.first_name, this.state.last_name, this.state.email); 
     }; 
 
@@ -81,9 +82,12 @@ class Signup extends Component {
                         className="input"
                         />
                     </div>
+                    <Link to={{ pathname: '/'}}>
+                        {console.log("hitting the link")}
                     <button onClick={this.signupUser} className="btn normal-btn">
                         Signup
                     </button>
+                    </Link>
                 </div>
             </div>
         ); 
