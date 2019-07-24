@@ -31,5 +31,12 @@ module.exports = {
         ]); 
         res.send(posts); 
     }, 
+
+    async savePost(req, res) {
+        let { height, weight, calories, diet, workout, goals, photo } = req.body; 
+        const db = req.app.get('db'); 
+        let posts = await db.save_post([height, weight, calories, diet, workout, goals, photo, req.session.user.id]); 
+        res.send(posts); 
+    }
     
 }

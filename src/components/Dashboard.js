@@ -12,7 +12,7 @@ class Dashboard extends Component {
     }
     render(){
         let { user, error, redirect } = this.props; 
-        if(error || redirect) return <Redirect to="/login"/>
+        if(error || redirect) return <Redirect to="/firstpage"/>
         if(!user.loggedIn) return <div>Loading</div>
         return(
             <div className='display-container'>

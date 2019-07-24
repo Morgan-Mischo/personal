@@ -1,5 +1,6 @@
 import React, { Component } from 'react'; 
-import { deletePost, editPost } from 'postReducer.js'; 
+import { connect } from 'react-redux';
+import { deletePost, editPost } from '../redux/postsReducer'; 
 
 class Post extends Component{
     constructor(props) {
@@ -137,3 +138,8 @@ class Post extends Component{
         ); 
 }
     }
+
+    export default connect(
+        null,
+        { deletePost, editPost }
+      )(Post);
