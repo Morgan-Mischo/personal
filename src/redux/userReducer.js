@@ -1,10 +1,11 @@
 import axios from "axios";
-import { SIGNUP, LOGIN, GET_USER } from "./actionTypes";
+import { SIGNUP, LOGIN, GET_USER, GET_USERS } from "./actionTypes";
 
 const initialState = {
   user: {},
   redirect: false,
-  error: false
+  error: false, 
+  users: []
 };
 
 export const signup = (username, password, first_name, last_name, email) => {
@@ -37,6 +38,14 @@ export const getUser = () => {
   };
 };
 
+export const getUsers = () => {
+  let data = axios.get("/api/users").then(res => res.data); 
+  return {
+    type: GET_USERS, 
+    payload: data
+  }; 
+}; 
+
 export default function(state = initialState, action) {
   let { type, payload } = action;
   switch (type) {
@@ -64,6 +73,8 @@ export default function(state = initialState, action) {
       return { ...state, user: payload, error: false }; 
       case GET_USER + '_REJECTED': 
       return { ...state, redirect: true, error: payload }; 
+      case GET_USERS + '_FULFILLED': 
+      return { ...state, users: payload}; 
     default:
       return state;
   }

@@ -29,6 +29,7 @@ app.post('/api/login', uc.login);
 app.post('/api/signup', uc.signup); 
 app.delete('/api/logout', uc.logout); 
 app.get('/api/user', authCheck,  uc.getUser); 
+app.get('/api/users', uc.getUsers); 
 
 //post endpoints
 app.get('/api/posts/:userId', pc.getPosts); 
