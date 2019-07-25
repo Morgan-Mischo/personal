@@ -15,7 +15,7 @@ export default (
         <Route path='/login' component={Login} />
         <Route path='/signup' component={Signup} />
         <Route path='/search' component={Search}/>
-        <Route path='/profile' component={Profile}/>
+        <Route path='/profile/' component={Profile}/>
         <Route path='/camera' component={Camera}/>
     </Switch>
 )
