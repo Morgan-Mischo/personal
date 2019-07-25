@@ -11,11 +11,18 @@ class Profile extends Component {
 
   componentDidMount() {
     this.props.getPosts();
-    this.getInfo();
+    this.getUser(); 
   }
 
-  getInfo = () => {
+  getUser = () => {
+      console.log('getuser')
     axios.get(`/api/getUser/${this.props.match.url}`)
+    .then(res => {
+        this.setState({
+            posts: res.userId.getPosts
+        })
+        console.log(this.posts)
+    })
   };
 
   render() {
@@ -29,10 +36,7 @@ class Profile extends Component {
 
         <div>
           Posts
-          <Link 
-            to={'/profile/${this.props.users.username'}
-            className="link-to"
-            />
+          {this.posts}
     
         </div>
        </div>
