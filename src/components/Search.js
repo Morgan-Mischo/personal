@@ -38,7 +38,7 @@ class Search extends Component {
   };
 
   grabUser = () => {
-      
+       
   }
 
   handleInputChange = () => {

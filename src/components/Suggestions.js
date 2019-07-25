@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 const Suggestions = (props) => {
     const options = props.results.map(r => (
         <li key={r.id}>
-            <Link to={{ pathname: '/profile' }} onClick={this.props.grabUser}>
+            {/* <Link to={{ pathname: '/profile/${r.username}' }} onClick={this.props.grabUser}> */}
             {r.username}
-            </Link>
+            {/* </Link> */}
         </li>
     ))
     return <ul>{options}</ul>
