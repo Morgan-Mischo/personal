@@ -1,11 +1,12 @@
 import axios from "axios";
-import { SIGNUP, LOGIN, GET_USER, GET_USERS } from "./actionTypes";
+import { SIGNUP, LOGIN, GET_USER, GET_USERS, GET_POSTS_PROFILE } from "./actionTypes";
 
 const initialState = {
   user: {},
   redirect: false,
   error: false, 
-  users: []
+  users: [], 
+  posts: []
 };
 
 export const signup = (username, password, first_name, last_name, email) => {
@@ -46,6 +47,19 @@ export const getUsers = () => {
   }; 
 }; 
 
+export const getUserProfile = (id) => {
+  let data = axios.get(`/api/getUserProfile/${id}`)
+  .then(res => res.data)
+  console.log('data', data)
+  return {
+    
+    type: GET_POSTS_PROFILE, 
+    payload: data
+
+  }
+  
+}
+
 export default function(state = initialState, action) {
   let { type, payload } = action;
   switch (type) {
@@ -75,6 +89,8 @@ export default function(state = initialState, action) {
       return { ...state, redirect: true, error: payload }; 
       case GET_USERS + '_FULFILLED': 
       return { ...state, users: payload}; 
+      case GET_POSTS_PROFILE + '_FULFILLED': 
+      return { ...state, posts: payload}
     default:
       return state;
   }

@@ -30,7 +30,7 @@ app.post('/api/signup', uc.signup);
 app.delete('/api/logout', uc.logout); 
 app.get('/api/user', authCheck,  uc.getUser); 
 app.get('/api/users', uc.getUsers); 
-app.get('/api/getUser/:id', uc.getProfile); 
+app.get('/api/getUserProfile/:id', uc.getUserProfile); 
 
 //post endpoints
 app.get('/api/posts/:userId', pc.getPosts); 

@@ -46,11 +46,10 @@ module.exports = {
         res.send(users); 
     }, 
 
-    async getProfile(req, res) {
-        console.log('aaaa' + req.params)
-        let { id } = req.params; 
+    async getUserProfile(req, res) {
+        let { id } = req.params;
         const db = req.app.get('db'); 
-        let posts = await db.get_post_by_user_profile(+id); 
+        let posts = await db.get_post_by_user(+id); 
         res.send(posts); 
     }
 }; 
