@@ -15,18 +15,27 @@ class Profile extends Component {
   }
 
   getUser = () => {
-      console.log('getuser')
-    axios.get(`/api/getUser/${this.props.match.url}`)
+    console.log(this.props)
+    const url = this.props.match.params.id
+    console.log('aaa',url)
+    axios.get(`/api/getUser/${this.props.match.params.id}`)
     .then(res => {
+      console.log(res)
         this.setState({
-            posts: res.userId.getPosts
+            posts: res.getPosts
         })
-        console.log(this.posts)
     })
   };
 
   render() {
-      console.log(this.props)
+    let mappedPosts = this.state.posts.map(post => {
+      return (
+        <post
+        key={post.id}
+        post={post}
+        id={post.id}
+        />
+      )})
     return (
       <div>
         <Link to={{ pathname: "/" }}>
@@ -35,8 +44,8 @@ class Profile extends Component {
         </Link>
 
         <div>
-          Posts
-          {this.posts}
+          Profile
+          <div className="posts">{mappedPosts}</div>
     
         </div>
        </div>

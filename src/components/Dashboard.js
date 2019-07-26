@@ -16,12 +16,12 @@ class Dashboard extends Component {
         if(!user.loggedIn) return <div>Loading</div>
         return(
             <div className='display-container'>
-                <h3>Posts</h3>
+                <h3>Dashboard</h3>
                 <Posts />
                 <Link to={{ pathname: '/search'}}>
                 <button className="search">Search</button>
                 </Link>
-                <Link to={{ pathname: `/profile/${this.props.user.username}`}}>
+                <Link to={{ pathname: `/profile/${this.props.user.id}`}}>
                 <button className="profile">Profile</button>
                 </Link>
                 <Link to={{ pathname: '/camera'}}>

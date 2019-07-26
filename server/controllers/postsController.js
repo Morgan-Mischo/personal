@@ -1,8 +1,8 @@
 module.exports = {
     async getPosts(req, res) {
-        let { userId } = req.params; 
+        let { id } = req.params; 
         const db = req.app.get('db'); 
-        let posts = await db.get_post_by_user(+userId); 
+        let posts = await db.get_post_by_user(+id); 
         res.send(posts); 
     }, 
 
@@ -10,7 +10,6 @@ module.exports = {
         let { postId } = req.params; 
         const db = req.app.get('db'); 
         let posts = await db.delete_post([+postId, req.session.user.id]); 
-        console.log(posts); 
         res.send(posts); 
     }, 
 

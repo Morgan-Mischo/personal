@@ -20,7 +20,6 @@ module.exports = {
     }, 
 
     async signup(req, res){
-        console.log('reaching uc')
         let { first_name, last_name, username, email, password } = req.body; 
         const db = req.app.get('db'); 
         let [existingUser] = await db.get_user_by_username(username); 
@@ -29,7 +28,6 @@ module.exports = {
         let hash = await bcrypt.hash(password, salt); 
         let [user] = await db.create_user([username, hash, first_name, last_name, email]); 
         req.session.user = { username: user.username, first_name: user.first_name, last_name: user.last_name, email: user.email, id: user.id, loggedIn: true }; 
-        console.log(req.session.user)
         res.send(req.session.user); 
     }, 
 
@@ -46,5 +44,13 @@ module.exports = {
         const db = req.app.get('db'); 
         let users = await db.get_all_users(); 
         res.send(users); 
+    }, 
+
+    async getProfile(req, res) {
+        console.log('aaaa' + req.params)
+        let { id } = req.params; 
+        const db = req.app.get('db'); 
+        let posts = await db.get_post_by_user_profile(+id); 
+        res.send(posts); 
     }
 }; 

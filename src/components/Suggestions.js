@@ -5,7 +5,7 @@ import { getUsers } from "../redux/userReducer";
 const Suggestions = (props) => {
     const options = props.results.map(r => (
         <li key={r.id}>
-            <Link to={{ pathname: `/profile/${r.username}` }}>
+            <Link to={{ pathname: `/profile/${r.id}` }}>
             {r.username}
             </Link>
         </li>
