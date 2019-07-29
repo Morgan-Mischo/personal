@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getPosts } from "../redux/postsReducer";
-import { getUserProfile } from '../redux/userReducer'
+import { getUserProfile } from '../redux/userReducer'; 
 import { Link } from "react-router-dom";
 import Post from './Post';
 
@@ -24,8 +24,6 @@ class Profile extends Component {
   }
 
   render() {
-    console.log('posts in render', this.props)
-    console.log(this.state);
     let mappedPosts = this.state.posts.map(post => {
       if(this.state.posts.length) {
         return (

@@ -3,6 +3,7 @@ import { Redirect, Link } from 'react-router-dom';
 import { connect } from 'react-redux'; 
 import { getUser } from '../redux/userReducer'; 
 import Posts from './Posts'; 
+import Followed from './Followed'; 
 
 class Dashboard extends Component {
     componentDidMount(){
@@ -18,7 +19,7 @@ class Dashboard extends Component {
         return(
             <div className='display-container'>
                 <h3>Dashboard</h3>
-                <Posts />
+                <Followed />
                 <Link to={{ pathname: '/search'}}>
                 <button className="search">Search</button>
                 </Link>

@@ -2,8 +2,11 @@ require ('dotenv').config({path: __dirname + '/../.env'});
 const express = require('express'); 
 const massive = require('massive'); 
 const session = require('express-session'); 
+
 const uc = require('./controllers/userController'); 
 const pc = require('./controllers/postsController'); 
+const fc = require('./controllers/followController'); 
+
 const initSession = require('./middleware/initSession'); 
 const authCheck = require('./middleware/authCheck'); 
 
@@ -37,5 +40,8 @@ app.get('/api/posts/:userId', pc.getPosts);
 // app.delete('/api/posts/:postId', pc.deletePost); 
 // app.put('/api/posts/edit/:postId', pc.editPost); 
 // app.post('/api/posts', pc.savePost); 
+
+//follow endpoints
+app.get('/api/getFollowed/:id', fc.getFollowed)
 
 app.listen(SERVER_PORT, () => console.log(`Listening on port ${SERVER_PORT}`)); 
