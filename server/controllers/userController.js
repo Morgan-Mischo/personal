@@ -48,7 +48,7 @@ module.exports = {
 
     async getUserProfile(req, res) {
         let { id } = req.params;
-        const db = req.app.get('db'); 
+        const db = req.app.get('db');
         let posts = await db.get_post_by_user(+id); 
         res.send(posts); 
     }

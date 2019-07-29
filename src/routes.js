@@ -6,7 +6,7 @@ import Dashboard from './components/Dashboard';
 import FirstPage from './components/FirstPage'; 
 import Search from './components/Search'; 
 import Profile from './components/Profile'; 
-import Camera from './components/Camera'; 
+// import Camera from './components/Camera'; 
 
 export default (
     <Switch>

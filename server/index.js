@@ -34,8 +34,8 @@ app.get('/api/getUserProfile/:id', uc.getUserProfile);
 
 //post endpoints
 app.get('/api/posts/:userId', pc.getPosts); 
-app.delete('/api/posts/:postId', pc.deletePost); 
-app.put('/api/posts/edit/:postId', pc.editPost); 
-app.post('/api/posts', pc.savePost); 
+// app.delete('/api/posts/:postId', pc.deletePost); 
+// app.put('/api/posts/edit/:postId', pc.editPost); 
+// app.post('/api/posts', pc.savePost); 
 
 app.listen(SERVER_PORT, () => console.log(`Listening on port ${SERVER_PORT}`)); 

@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { getPosts } from "../redux/postsReducer";
 import { getUserProfile } from '../redux/userReducer'
 import { Link } from "react-router-dom";
-import axios from "axios";
+import Post from './Post';
 
 class Profile extends Component {
   
@@ -12,28 +12,35 @@ class Profile extends Component {
   };
 
   componentDidMount() {
-    // this.props.getPosts();
-    console.log("params", this.props.getUserProfile)
-   this.getUser()
-  
-   console.log('posts', this.state.posts)
-   console.log('props',this.props)
+    this.props.getUserProfile(this.props.match.params.id)
   }
 
-  getUser = () => {
-    this.props.getUserProfile(this.props.match.params.id); 
+  componentDidUpdate(prevProps) {
+    if(prevProps.reduxState.user.posts !== this.props.reduxState.user.posts) {
+      this.setState({
+        posts: this.props.reduxState.user.posts
+      })
     }
+  }
 
   render() {
-    
-    // let mappedPosts = this.state.posts.map(post => {
-    //   return (
-    //     <post
-    //     key={post.id}
-    //     post={post}
-    //     id={post.id}
-    //     />
-    //   )})
+    console.log('posts in render', this.props)
+    console.log(this.state);
+    let mappedPosts = this.state.posts.map(post => {
+      if(this.state.posts.length) {
+        return (
+        <Post key={post.id} {...post} />
+        )
+      }
+      else {
+        return (
+        <div>User has no posts</div>
+        )
+      }
+    }
+    )
+
+
     return (
       <div>
         <Link to={{ pathname: "/" }}>
@@ -43,8 +50,8 @@ class Profile extends Component {
 
         <div>
           Profile
-          {/* <Link
-          to={`/profile/${this.props.user}`} */}
+          {mappedPosts}
+          {/* {this.state.posts.length ? this.state.posts[0].calories : <div>loading...</div>} */}
     
         </div>
        </div>

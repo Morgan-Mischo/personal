@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from "react-router-dom";
-import { getUsers } from "../redux/userReducer";
 
 const Suggestions = (props) => {
     const options = props.results.map(r => (
