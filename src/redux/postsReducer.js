@@ -6,8 +6,8 @@ const initialState = {
     error: false
 }
 
-export function getPosts(userId) {
-    let data = axios.get(`/api/posts/${userId}`).then(res => res.data); 
+export function getPosts(id) {
+    let data = axios.get(`/api/posts/${id}`).then(res => res.data); 
     return {
         type: GET_POSTS, 
         payload: data

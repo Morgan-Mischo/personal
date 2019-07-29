@@ -6,7 +6,9 @@ const initialState = {
 }; 
 
 export const getFollowed = (id) => {
-    let data = axios.get(`/api/getFollowed/${id}`).then(res => res.data)
+    let data = axios.get(`/api/getFollowed/${id}`).then(res => 
+     {   console.log(res.data, 'data')
+       return  res.data})
     return {
         type: GET_FOLLOWED, 
         payload: data

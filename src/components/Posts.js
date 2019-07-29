@@ -6,9 +6,9 @@ import Post from './Post';
 class Posts extends Component {
 
     componentDidMount(){
-        let { getPosts, posts, userId } = this.props; 
+        let { getPosts, posts, id } = this.props; 
         if (!posts.length) {
-            getPosts(userId); 
+            getPosts(id); 
         }
     }
 
@@ -26,7 +26,7 @@ class Posts extends Component {
 
 function mapStateToProps(state) {
     return {
-        userId: state.user.user.id, 
+        id: state.user.user.id, 
         ...state.posts
     }; 
 }

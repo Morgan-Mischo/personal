@@ -36,7 +36,7 @@ app.get('/api/users', uc.getUsers);
 app.get('/api/getUserProfile/:id', uc.getUserProfile); 
 
 //post endpoints
-app.get('/api/posts/:userId', pc.getPosts); 
+app.get('/api/posts/:id', pc.getPosts); 
 // app.delete('/api/posts/:postId', pc.deletePost); 
 // app.put('/api/posts/edit/:postId', pc.editPost); 
 // app.post('/api/posts', pc.savePost); 

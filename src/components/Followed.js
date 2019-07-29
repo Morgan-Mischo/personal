@@ -4,6 +4,9 @@ import { getFollowed } from '../redux/followReducer';
 import Post from './Post'; 
 
 class Followed extends Component {
+    state = {
+        followed: []
+    }
 
     componentDidMount(){
         let { getFollowed, followed, id } = this.props; 
@@ -12,24 +15,38 @@ class Followed extends Component {
             console.log(getFollowed(id)); 
     }
 
-    render() {
-        console.log(this.props.followed)
-        return (
-            <div>
-                {/* {followed.map(post => (
-                    <Post key ={followed.id} {...followed} />
-                ))}  */}
-                {/* {followed[0]} */}
-            </div>
-        )
+    componentDidUpdate(prevProps) {
+        if(prevProps.followed !== this.props.followed) {
+            console.log('updatefollowed', this.props.followed)
+            this.setState({
+                followed: this.props.followed 
+            })
+            
+        }
+        
     }
-}
+    render() {
+        let mappedPosts = this.state.posts.map(post => {
+          if(this.state.posts.length) {
+            return (
+            <Post key={post.id} {...post} />
+            )
+          }
+          else {
+            return (
+            <div>User has no posts</div>
+            )
+          }
+        }
+        )
+
+
 
 function mapStateToProps(state) {
     return {
-        userId: state.user.user.id, 
+        id: state.user.user.id, 
         ...state.followed
     }; 
 }
 
-export default connect(mapStateToProps, {getFollowed})(Followed); 
+export default connect(mapStateToProps, {getFollowed})(Followed)
