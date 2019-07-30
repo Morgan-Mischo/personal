@@ -6,7 +6,7 @@ import Dashboard from './components/Dashboard';
 import FirstPage from './components/FirstPage'; 
 import Search from './components/Search'; 
 import Profile from './components/Profile'; 
-// import Camera from './components/Camera'; 
+import Post from './components/Post'; 
 
 export default (
     <Switch>
@@ -16,6 +16,6 @@ export default (
         <Route path='/signup' component={Signup} />
         <Route path='/search' component={Search}/>
         <Route path='/profile/:id' component={Profile}/>
-        {/* <Route path='/camera' component={Camera}/> */}
+        <Route path='/post' component={Post}/>
     </Switch>
 )

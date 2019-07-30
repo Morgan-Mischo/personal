@@ -4,9 +4,14 @@ import { getFollowed } from '../redux/followReducer';
 import Post from './Post'; 
 
 class Followed extends Component {
-    state = {
-        followed: []
+    constructor() {
+        super(); 
+        this.state = {
+            followed: []
+        }
+
     }
+
 
     componentDidMount(){
         let { getFollowed, followed, id } = this.props; 
@@ -14,6 +19,8 @@ class Followed extends Component {
             getFollowed(id); 
             console.log(getFollowed(id)); 
     }
+
+
 
     componentDidUpdate(prevProps) {
         if(prevProps.followed !== this.props.followed) {
@@ -26,8 +33,8 @@ class Followed extends Component {
         
     }
     render() {
-        let mappedPosts = this.state.posts.map(post => {
-          if(this.state.posts.length) {
+        let mappedPosts = this.state.followed.map(post => {
+          if(this.state.followed.length) {
             return (
             <Post key={post.id} {...post} />
             )
@@ -39,14 +46,20 @@ class Followed extends Component {
           }
         }
         )
-
-
-
-function mapStateToProps(state) {
-    return {
-        id: state.user.user.id, 
-        ...state.followed
-    }; 
+    return (
+        <div>{mappedPosts}</div>
+    )
+}
 }
 
-export default connect(mapStateToProps, {getFollowed})(Followed)
+
+        function mapStateToProps(state) {
+            return {id: state.user.user.id, 
+            ...state.followed};
+          }
+          
+          export default connect(
+            mapStateToProps,
+            { getFollowed }
+          )(Followed);
+

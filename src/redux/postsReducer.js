@@ -1,49 +1,96 @@
-import axios from 'axios'; 
-import { GET_POSTS, DELETE_POST, EDIT_POST } from './actionTypes'; 
+import axios from "axios";
+import { GET_POSTS, DELETE_POST, EDIT_POST, MAKE_POST } from "./actionTypes";
 
 const initialState = {
-    posts: [], 
-    error: false
-}
+  posts: [],
+  error: false
+};
 
 export function getPosts(id) {
-    let data = axios.get(`/api/posts/${id}`).then(res => res.data); 
-    return {
-        type: GET_POSTS, 
-        payload: data
-    }; 
+  let data = axios.get(`/api/posts/${id}`).then(res => res.data);
+  return {
+    type: GET_POSTS,
+    payload: data
+  };
 }
 
 export function deletePost(postId) {
-    let data = axios.delete(`/api/posts/${postId}`).then(res => res.data); 
-    return {
-        type: DELETE_POST, 
-        payload: data
-    }; 
+  let data = axios.delete(`/api/posts/${postId}`).then(res => res.data);
+  return {
+    type: DELETE_POST,
+    payload: data
+  };
 }
 
-export function editPost(postId, newHeight, newWeight, newCalories, newDiet, newWorkout, newGoals, newPhoto){
-    let data = axios
-    .put(`/api/posts/edit/${postId}`, { newHeight, newWeight, newCalories, newDiet, newWorkout, newGoals, newPhoto })
-    .then(res => res.data); 
-    return {
-        type: EDIT_POST, 
-        payload: data
-    }; 
+export function editPost(
+  postId,
+  newHeight,
+  newWeight,
+  newCalories,
+  newDiet,
+  newWorkout,
+  newGoals,
+  newPhoto
+) {
+  let data = axios
+    .put(`/api/posts/edit/${postId}`, {
+      newHeight,
+      newWeight,
+      newCalories,
+      newDiet,
+      newWorkout,
+      newGoals,
+      newPhoto
+    })
+    .then(res => res.data);
+  return {
+    type: EDIT_POST,
+    payload: data
+  };
+}
+
+export function savePost(
+  postId,
+  newHeight,
+  newWeight,
+  newCalories,
+  newDiet,
+  newWorkout,
+  newGoals,
+  newPhoto
+) {
+  let data = axios
+    .post("/api/posts", {
+      postId,
+      newHeight,
+      newWeight,
+      newCalories,
+      newDiet,
+      newWorkout,
+      newGoals,
+      newPhoto
+    })
+    .then(res => res.data);
+  return {
+    type: MAKE_POST,
+    payload: data
+  };
 }
 
 export default function postsReducer(state = initialState, action) {
-    let { type, payload } = action; 
-    switch(type) {
-        case GET_POSTS + '_FULFILLED': 
-        return { posts: payload, error: false }; 
-        case GET_POSTS + '_REJECTED':
-            return { ...state, error: payload };
-            case DELETE_POST + '_FULFILLED': 
-            return { ...state, posts: payload }; 
-            case EDIT_POST + '_FULFILLED': 
-            return { ...state, posts: payload }; 
-        default: 
-        return state; 
-    }
+  let { type, payload } = action;
+  switch (type) {
+    case MAKE_POST + "_FULFILLED":
+      return { ...state, posts: payload, error: false };
+    case GET_POSTS + "_FULFILLED":
+      return { posts: payload, error: false };
+    case GET_POSTS + "_REJECTED":
+      return { ...state, error: payload };
+    case DELETE_POST + "_FULFILLED":
+      return { ...state, posts: payload };
+    case EDIT_POST + "_FULFILLED":
+      return { ...state, posts: payload };
+    default:
+      return state;
+  }
 }
