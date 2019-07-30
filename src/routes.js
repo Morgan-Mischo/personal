@@ -7,6 +7,7 @@ import FirstPage from './components/FirstPage';
 import Search from './components/Search'; 
 import Profile from './components/Profile'; 
 import Post from './components/Post'; 
+import Create from './components/Create'; 
 
 export default (
     <Switch>
@@ -17,5 +18,6 @@ export default (
         <Route path='/search' component={Search}/>
         <Route path='/profile/:id' component={Profile}/>
         <Route path='/post' component={Post}/>
+        <Route path = '/create' component={Create}/>
     </Switch>
 )

@@ -51,24 +51,24 @@ export function editPost(
 
 export function savePost(
   postId,
-  newHeight,
-  newWeight,
-  newCalories,
-  newDiet,
-  newWorkout,
-  newGoals,
-  newPhoto
+  height,
+  weight,
+  calories,
+  diet,
+  workout,
+  goals,
+  photo
 ) {
   let data = axios
     .post("/api/posts", {
       postId,
-      newHeight,
-      newWeight,
-      newCalories,
-      newDiet,
-      newWorkout,
-      newGoals,
-      newPhoto
+      height,
+      weight,
+      calories,
+      diet,
+      workout,
+      goals,
+      photo
     })
     .then(res => res.data);
   return {

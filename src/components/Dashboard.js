@@ -26,7 +26,7 @@ class Dashboard extends Component {
                 <Link to={{ pathname: `/profile/${this.props.user.id}`}}>
                 <button className="profile">Profile</button>
                 </Link>
-                <Link to={{ pathname: '/post'}}>
+                <Link to={{ pathname: '/create'}}>
                 <button className="post">Post</button>
                 </Link>
             </div>
