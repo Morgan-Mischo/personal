@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import { getUser } from "../redux/userReducer";
 import Followed from "./Followed"; 
 import "../styling/reset.css";
-import "../styling/dashboard.css";
 
 
 class Dashboard extends Component {

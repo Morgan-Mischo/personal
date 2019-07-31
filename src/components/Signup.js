@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'; 
 import { signup } from '../redux/userReducer'; 
 import { Redirect, Link } from 'react-router-dom'; 
-import '../styling/reset.css'; 
-import '../styling/signup.css'; 
+import '../styling/reset.css';  
 
 class Signup extends Component {
     constructor() {

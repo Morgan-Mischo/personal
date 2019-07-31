@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import "../styling/firstPage.css";
+import "../styling/firstPage.scss";
 import "../styling/reset.css";
 
 class FirstPage extends Component {

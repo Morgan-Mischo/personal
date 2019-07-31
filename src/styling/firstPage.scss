@@ -1,0 +1,18 @@
+@import "./_background"; 
+
+//whole page
+.display-container {
+   @include background($dark); 
+}
+
+//box with the class name and buttons
+.box-medium {
+
+  //app name
+  .app-name {
+  }
+
+  //buttons
+  .button {
+  }
+}

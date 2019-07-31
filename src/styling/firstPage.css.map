@@ -1,0 +1,11 @@
+{
+    "version": 3,
+    "mappings": "AAGA,AAAA,kBAAkB,CAAC;ECAf,MAAM,EAAE,KAAK;EACb,KAAK,EAAE,KAAK;EACZ,gBAAgB,ECLb,OAAO;CFKb",
+    "sources": [
+        "firstPage.scss",
+        "_background.scss",
+        "_variable.scss"
+    ],
+    "names": [],
+    "file": "firstPage.css"
+}
