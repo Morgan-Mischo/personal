@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'; 
 import { signup } from '../redux/userReducer'; 
 import { Redirect, Link } from 'react-router-dom'; 
+import '../styling/reset.css'; 
+import '../styling/signup.css'; 
 
 class Signup extends Component {
     constructor() {
@@ -32,59 +34,60 @@ class Signup extends Component {
         return (
             <div className="display-container">
                 <div className="box-medium">
-                    <div className="input-row">
-                        Username: {' '}
+                <div className="app-name">Fitbook</div>
+                    <div className="input">
                         <input
                         type= 'text'
                         value={username}
                         name="username"
                         onChange={this.handleChange}
                         className="input"
+                        placeholder="username"
                         />
                     </div>
-                    <div className="input-row">
-                        Password: {' '}
+                    <div className="input">
                         <input
                         type= 'text'
                         value={password}
                         name="password"
                         onChange={this.handleChange}
                         className="input"
+                        placeholder="password"
                         />
                     </div>
-                    <div className="input-row">
-                        First_name: {' '}
+                    <div className="input">
                         <input
                         type= 'text'
                         value={first_name}
                         name="first_name"
                         onChange={this.handleChange}
                         className="input"
+                        placeholder="first name"
                         />
                     </div>
-                    <div className="input-row">
-                        Last_name: {' '}
+                    <div className="input">
                         <input
                         type= 'text'
                         value={last_name}
                         name="last_name"
                         onChange={this.handleChange}
                         className="input"
+                        placeholder="last name"
                         />
                     </div>
-                    <div className="input-row">
-                        Email: {' '}
+                    <div className="input-bottom">
                         <input
                         type= 'text'
                         value={email}
                         name="email"
                         onChange={this.handleChange}
                         className="input"
+                        placeholder="email"
                         />
                     </div>
                     <Link to={{ pathname: '/'}}>
                         {console.log("hitting the link")}
-                    <button onClick={this.signupUser} className="btn normal-btn">
+                    <button onClick={this.signupUser} className="button">
                         Signup
                     </button>
                     </Link>
