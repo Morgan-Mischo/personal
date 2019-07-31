@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { deletePost, editPost } from "../redux/postsReducer";
+import "../styling/reset.css"; 
+import "../styling/post.scss"; 
 
 class Post extends Component {
   constructor(props) {
@@ -77,6 +79,7 @@ class Post extends Component {
   }
 
   render() {
+      console.log(this.props)
     let { height, weight, calories, diet, workout, goals, photo } = this.props;
     let {
       newHeight,
@@ -96,43 +99,43 @@ class Post extends Component {
               value={newHeight}
               onChange={this.handleChange}
               name="newHeight"
-              className="input full-width"
+              className="input-full-width"
             />
             <input
               value={newWeight}
               onChange={this.handleChange}
               name="newWeight"
-              className="input full-width"
+              className="input-full-width"
             />
             <input
               value={newCalories}
               onChange={this.handleChange}
               name="newCalories"
-              className="input full-width"
+              className="input-full-width"
             />
             <textarea
               value={newDiet}
               onChange={this.handleChange}
               name="newDiet"
-              className="input full-width"
+              className="input-full-width"
             />
             <textarea
               value={newWorkout}
               onChange={this.handleChange}
               name="newWorkout"
-              className="input full-width"
+              className="input-full-width"
             />
             <textarea
               value={newGoals}
               onChange={this.handleChange}
               name="newGoals"
-              className="input full-width"
+              className="input-full-width"
             />
             <img
               value={newPhoto}
               onChange={this.handleChange}
               name="newPhoto"
-              className="input full-width"
+              className="input-photo"
               alt="Loading"
             />
             <div>
