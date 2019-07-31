@@ -4,4 +4,19 @@
     height: 100vh; 
     width: 100vw; 
     background-color: $background-color; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+}
+
+@mixin box($height, $width, $padding) {
+    background-color: $white; 
+    height: $height; 
+    width: $width; 
+    border-radius: 25px; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: flex-start; 
+    padding-top: $padding; 
 }

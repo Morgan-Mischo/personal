@@ -1,0 +1,24 @@
+@import "./_background";
+@import "./_fitbook";
+
+.display-container-dash {
+  @include background($gray);
+  flex-direction: column;
+  .header-bar {
+    align-items: center;
+    .box-medium {
+      @include box(60%, 40%, 10%);
+      .app-name-dash {
+        @include name($desktop-font-size, $margin-bottom-name);
+      }
+      .button {
+        @include main-buttons(
+          $margin-button,
+          $height-button,
+          $width-button,
+          $button-font-size
+        );
+      }
+    }
+  }
+}

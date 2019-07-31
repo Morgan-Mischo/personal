@@ -1,0 +1,20 @@
+@import './variable'; 
+
+@mixin name($font-size, $margin) {
+    font-family: 'Raleway', sans-serif;
+    font-size: $font-size; 
+    color: #6200B3; 
+    margin-bottom: $margin; 
+}
+
+@mixin main-buttons($margin, $height, $width, $font-size) {
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+    margin-bottom: $margin; 
+    height: $height; 
+    width: $width; 
+    font-size: $font-size; 
+    border-radius: 25px; 
+    background-color: white; 
+    border-color: $electric-blue; 
+}

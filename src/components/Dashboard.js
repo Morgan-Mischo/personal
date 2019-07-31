@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import { Redirect, Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { getUser } from "../redux/userReducer";
-import Followed from "./Followed"; 
+import Followed from "./Followed";
 import "../styling/reset.css";
-
+import "../styling/dashboard.scss";
 
 class Dashboard extends Component {
   componentDidMount() {
@@ -35,7 +35,6 @@ class Dashboard extends Component {
           <Link to={{ pathname: "/create" }}>
             <button className="buttons-dash-post">Post</button>
           </Link>
-    
         </div>
 
         <div className="box-medium-dash">

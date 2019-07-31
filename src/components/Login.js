@@ -3,7 +3,7 @@ import { login } from '../redux/userReducer';
 import { connect } from 'react-redux'; 
 import { Redirect } from 'react-router-dom'; 
 import "../styling/reset.css"; 
-
+import "../styling/login.scss"; 
 class Login extends Component {
     constructor() {
         super(); 

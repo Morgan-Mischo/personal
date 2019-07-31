@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { signup } from '../redux/userReducer'; 
 import { Redirect, Link } from 'react-router-dom'; 
 import '../styling/reset.css';  
+import '../styling/signup.scss'; 
 
 class Signup extends Component {
     constructor() {
@@ -75,7 +76,7 @@ class Signup extends Component {
                         placeholder="last name"
                         />
                     </div>
-                    <div className="input-bottom">
+                    <div className="input">
                         <input
                         type= 'text'
                         value={email}
@@ -85,7 +86,7 @@ class Signup extends Component {
                         placeholder="email"
                         />
                     </div>
-                    <div className="input-bottom">
+                    <div className="input">
                         <input
                         type= 'text'
                         value={picture}

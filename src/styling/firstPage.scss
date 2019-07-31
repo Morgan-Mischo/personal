@@ -1,18 +1,33 @@
-@import "./_background"; 
+@import "./_background";
+@import "./_fitbook";
 
-//whole page
 .display-container {
-   @include background($dark); 
+  @include background($dark);
 }
 
-//box with the class name and buttons
 .box-medium {
-
-  //app name
+  @include box(60%, 40%, 10%);
   .app-name {
+    @include name($desktop-font-size, $margin-bottom-name);
   }
-
-  //buttons
   .button {
+    @include main-buttons(
+      $margin-button,
+      $height-button,
+      $width-button,
+      $button-font-size
+    );
+  }
+}
+
+@media screen and (max-width: 780px) {
+  .display-container {
+    @include background($gray);
+  }
+  .box-medium {
+    @include box(100%, 90%, 50vmax);
+    .app-name {
+      @include name($desktop-font-size, $margin-bottom-name);
+    }
   }
 }
