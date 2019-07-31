@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { getUser } from '../redux/userReducer'; 
 import Posts from './Posts'; 
 import Followed from './Followed'; 
+import '../styling/reset.css'; 
+import '../styling/dashboard.css'; 
 
 class Dashboard extends Component {
     componentDidMount(){
@@ -17,7 +19,13 @@ class Dashboard extends Component {
         if(error || redirect) return <Redirect to="/firstpage"/>
         if(!user.loggedIn) return <div>Loading</div>
         return(
-            <div className='display-container'>
+            <div className='display-container-dash'>
+                          <style>
+            @import
+            url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+          </style>
+                <div className='box-medium-dash'>
+                <div className="app-name-dash">Fitbook</div>
                 <h3>Dashboard</h3>
                 <Followed />
                 <Link to={{ pathname: '/search'}}>
@@ -29,6 +37,7 @@ class Dashboard extends Component {
                 <Link to={{ pathname: '/create'}}>
                 <button className="post">Post</button>
                 </Link>
+            </div>
             </div>
         ); 
     }

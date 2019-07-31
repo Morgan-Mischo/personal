@@ -9,9 +9,9 @@ const initialState = {
   posts: []
 };
 
-export const signup = (username, password, first_name, last_name, email) => {
+export const signup = (username, password, first_name, last_name, email, picture) => {
   let data = axios
-    .post("/api/signup", { username, password, first_name, last_name, email })
+    .post("/api/signup", { username, password, first_name, last_name, email, picture })
     .then(res => res.data);
 
   return {

@@ -13,7 +13,8 @@ class Signup extends Component {
             password: '', 
             first_name: '', 
             last_name: '', 
-            email: ''
+            email: '', 
+            picture: ''
         }
     }
 
@@ -24,11 +25,11 @@ class Signup extends Component {
 
     signupUser = () => {
         console.log("hitting signup")
-        this.props.signup(this.state.username, this.state.password, this.state.first_name, this.state.last_name, this.state.email); 
+        this.props.signup(this.state.username, this.state.password, this.state.first_name, this.state.last_name, this.state.email, this.state.picture); 
     }; 
 
     render(){
-        let { username, password, first_name, last_name, email} = this.state; 
+        let { username, password, first_name, last_name, email, picture} = this.state; 
         let { user } = this.props; 
         if (user.loggedIn) return <Redirect to="/" />
         return (
@@ -83,6 +84,16 @@ class Signup extends Component {
                         onChange={this.handleChange}
                         className="input"
                         placeholder="email"
+                        />
+                    </div>
+                    <div className="input-bottom">
+                        <input
+                        type= 'text'
+                        value={picture}
+                        name="picture"
+                        onChange={this.handleChange}
+                        className="input"
+                        placeholder="picture url"
                         />
                     </div>
                     <Link to={{ pathname: '/'}}>

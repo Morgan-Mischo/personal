@@ -5,6 +5,7 @@ CREATE TABLE "users" (
 	"username" TEXT NOT NULL,
 	"email" TEXT NOT NULL,
 	"password" TEXT NOT NULL,
+	"picture" TEXT NOT NULL, 
 	CONSTRAINT "users_pk" PRIMARY KEY ("id")
 ) WITH (
   OIDS=FALSE
