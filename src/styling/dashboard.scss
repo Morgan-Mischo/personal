@@ -4,10 +4,14 @@
 .display-container-dash {
   @include background($gray);
   flex-direction: column;
+  align-items: center;
+  justify-content: center; 
   .header-bar {
     align-items: center;
+    @include name(4vmax, 8vmax); 
     .box-medium {
       @include box(60%, 40%, 10%);
+      align-content: center;
       .app-name-dash {
         @include name($desktop-font-size, $margin-bottom-name);
       }
@@ -20,5 +24,8 @@
         );
       }
     }
+  }
+  .box-medium-dash {
+    align-items: center; 
   }
 }

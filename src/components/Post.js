@@ -149,9 +149,11 @@ class Post extends Component {
           </div>
         ) : (
           <div>
-            <img src={photo} alt="Loading" />
-            <h3> {goals} </h3>
-            <h4> {workout} </h4>
+            <div className = "img-container">
+            <img className="input-photo" src={photo} alt="Loading" />
+            </div>
+            <p> {goals} </p>
+            <p> {workout} </p>
             <h4> {diet} </h4>
             <h5> {calories} </h5>
             <h6> {height} </h6>
