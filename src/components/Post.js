@@ -79,7 +79,6 @@ class Post extends Component {
   }
 
   render() {
-      console.log(this.props)
     let { height, weight, calories, diet, workout, goals, photo } = this.props;
     let {
       newHeight,

@@ -21,11 +21,9 @@ class Create extends Component {
   handleChange = e => {
     let { name, value } = e.target;
     this.setState({ [name]: value });
-    console.log("state", this.state)
   };
 
   savePost = () => {
-    console.log("hitting post");
     this.props.savePost(
       this.state.height,
       this.state.weight,
@@ -100,7 +98,6 @@ class Create extends Component {
           />
         </div>
         <Link to={{ pathname: '/'}}>
-            {console.log("hitting dashboard link")}
             <button onClick={this.savePost} className="btn">
                 Post!
             </button>

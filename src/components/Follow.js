@@ -16,14 +16,12 @@ class Follow extends Component {
     flipFollow = () => this.setState({ following: !this.state.following }); 
 
     followUser = () => {
-        console.log('hitting follow')
         this.flipFollow(); 
         this.props.follow(this.props.match.params.id, 
             this.props.reduxState.user.user.id); 
     }; 
 
     render() {
-        console.log("hello", this.state.props)
         let{ user_following, user_followed, following } = this.state; 
         return (
             <div className="following">

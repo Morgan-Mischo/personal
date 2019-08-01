@@ -42,7 +42,6 @@ class Search extends Component {
   }
 
   handleInputChange = () => {
-    console.log(this.search.value);
     this.setState(
       {
         query: this.search.value
@@ -61,7 +60,6 @@ class Search extends Component {
     return (
       <div>
         <Link to={{ pathname: "/" }}>
-          {console.log("hitting the link")}
           <button className="btn normal-btn">Fitbook</button>
         </Link>
 

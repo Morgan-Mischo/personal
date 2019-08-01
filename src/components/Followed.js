@@ -15,16 +15,13 @@ class Followed extends Component {
 
     componentDidMount(){
         let { getFollowed, followed, id } = this.props; 
-        console.log('followed', followed)
             getFollowed(id); 
-            console.log(getFollowed(id)); 
     }
 
 
 
     componentDidUpdate(prevProps) {
         if(prevProps.followed !== this.props.followed) {
-            console.log('updatefollowed', this.props.followed)
             this.setState({
                 followed: this.props.followed 
             })

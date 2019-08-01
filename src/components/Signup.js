@@ -24,7 +24,6 @@ class Signup extends Component {
     }; 
 
     signupUser = () => {
-        console.log("hitting signup")
         this.props.signup(this.state.username, this.state.password, this.state.first_name, this.state.last_name, this.state.email, this.state.picture); 
     }; 
 
@@ -97,7 +96,6 @@ class Signup extends Component {
                         />
                     </div>
                     <Link to={{ pathname: '/'}}>
-                        {console.log("hitting the link")}
                     <button onClick={this.signupUser} className="button">
                         Signup
                     </button>

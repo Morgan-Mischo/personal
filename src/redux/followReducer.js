@@ -7,7 +7,6 @@ const initialState = {
 
 export const getFollowed = id => {
   let data = axios.get(`/api/getFollowed/${id}`).then(res => {
-    console.log(res.data, "data");
     return res.data;
   });
   return {

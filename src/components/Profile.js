@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getPosts } from "../redux/postsReducer";
-import { getUserProfile, logout, getUser } from '../redux/userReducer'; 
+import { getUserProfile } from '../redux/userReducer'; 
 import { Link } from "react-router-dom";
+import { follow } from '../redux/followReducer'; 
 import Post from './Post';
 import Follow from "./Follow"; 
 
@@ -10,7 +11,10 @@ class Profile extends Component {
   
   state = {
     posts: [], 
-    id: this.props.match.params.id
+    user_following: '', 
+    user_followed: '', 
+    following: false, 
+    id: ''
   };
 
   componentDidMount() {
@@ -23,10 +27,23 @@ class Profile extends Component {
         posts: this.props.reduxState.user.posts
       })
     }
+    if(prevProps.reduxState.user.id !== this.props.reduxState.user.id) {
+      this.setState({
+        id: this.props.reduxState.user.id
+      })
+    }
   }
 
-  render() {
+  flipFollow = () => this.setState({ following: !this.state.following }); 
 
+  followUser = () => {
+      this.flipFollow(); 
+      this.props.follow(this.props.match.params.id, 
+          this.state.id); 
+  }; 
+
+  render() {
+    let{ user_following, user_followed, following } = this.state; 
     let mappedPosts = this.state.posts.map(post => {
       if(this.state.posts.length) {
         return (
@@ -45,14 +62,27 @@ class Profile extends Component {
     return (
       <div>
         <Link to={{ pathname: "/" }}>
-          {console.log("hitting the link")}
           <button className="btn normal-btn">Fitbook</button>
         </Link>
+
+        
+
+            <div className="following">
+                {following ? (
+                    <button onClick={this.flipFollow} className="follow-button">
+                        Following!
+                    </button>
+                ) : (
+                    <button onClick={this.followUser} className="follow-button">
+                        Follow
+                    </button>
+                )}
+            </div>
+
 
         <div>
           Profile
           {mappedPosts}
-          <Follow />
         </div>
        </div>
     );

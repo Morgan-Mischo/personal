@@ -38,7 +38,6 @@ export const logout = () => {
 }; 
 
 export const getUser = () => {
-  console.log('hitting user reducer')
   let data = axios.get("/api/user").then(res => res.data);
   return {
     type: GET_USER,

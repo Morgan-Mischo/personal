@@ -6,7 +6,6 @@ import { getUser } from "../redux/userReducer";
 import Followed from "./Followed";
 
 function Header(props) {
-  console.log(props);
   return (
     <div className="header">
       <div className="app-name-dash">Fitbook</div>
