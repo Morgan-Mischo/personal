@@ -6,6 +6,7 @@ import { getUser } from "../redux/userReducer";
 import Followed from "./Followed";
 
 function Header(props) {
+
   return (
     <div className="header">
       <div className="app-name-dash">Fitbook</div>
@@ -18,9 +19,11 @@ function Header(props) {
       <Link to={{ pathname: "/create" }}>
         <button className="buttons-dash-post">Post</button>
       </Link>
+      <Link to={{ pathname: "/firstpage" }}>
       <button onClick={props.logout} className="button">
         Logout
       </button>
+      </Link>
      
     </div>
   );
