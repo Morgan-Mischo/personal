@@ -8,6 +8,12 @@ import "../styling/reset.css";
 import "../styling/dashboard.scss";
 
 class Dashboard extends Component {
+  constructor() {
+    super(); 
+    this.state= {
+      user_id : ''
+    }
+  }
   componentDidMount() {
     if (!this.props.user.loggedIn) {
       this.props.getUser();

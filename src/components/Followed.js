@@ -2,12 +2,13 @@ import React, { Component } from "react";
 import { connect } from "react-redux"; 
 import { getFollowed, follow } from '../redux/followReducer'; 
 import Post from './Post'; 
+import Profile from './Profile'; 
 
 class Followed extends Component {
     constructor() {
         super(); 
         this.state = {
-            followed: [], 
+            followed: []
         }; 
 
     }
@@ -16,6 +17,9 @@ class Followed extends Component {
     componentDidMount(){
         let { getFollowed, followed, id } = this.props; 
             getFollowed(id); 
+            this.setState({
+                id: this.props.id
+            })
     }
 
 
@@ -44,7 +48,8 @@ class Followed extends Component {
         }
         )
     return (
-        <div>{mappedPosts}</div>
+        <div>{mappedPosts}
+        </div>
     )
 }
 }

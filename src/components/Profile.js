@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getPosts } from "../redux/postsReducer";
-import { getUserProfile } from '../redux/userReducer'; 
-import { Link } from "react-router-dom";
+import { getUserProfile, getUser } from '../redux/userReducer'; 
 import { follow } from '../redux/followReducer'; 
+import { Link } from "react-router-dom";
 import Post from './Post';
-import Follow from "./Follow"; 
 
 class Profile extends Component {
   
@@ -14,11 +13,12 @@ class Profile extends Component {
     user_following: '', 
     user_followed: '', 
     following: false, 
-    id: ''
   };
 
   componentDidMount() {
     this.props.getUserProfile(this.props.match.params.id)
+    this.props.getUser()
+    
   }
 
   componentDidUpdate(prevProps) {
@@ -27,19 +27,13 @@ class Profile extends Component {
         posts: this.props.reduxState.user.posts
       })
     }
-    if(prevProps.reduxState.user.id !== this.props.reduxState.user.id) {
-      this.setState({
-        id: this.props.reduxState.user.id
-      })
-    }
   }
 
   flipFollow = () => this.setState({ following: !this.state.following }); 
 
   followUser = () => {
       this.flipFollow(); 
-      this.props.follow(this.props.match.params.id, 
-          this.state.id); 
+      this.props.follow(this.props.id, this.props.match.params.id  ); 
   }; 
 
   render() {
@@ -90,10 +84,10 @@ class Profile extends Component {
 }
 
 function mapStateToProps(state) {
-  return {reduxState: state};
+  return {reduxState: state, id: state.user.user.id};
 }
 
 export default connect(
   mapStateToProps,
-  { getPosts, getUserProfile }
+  { getPosts, getUserProfile, getUser, follow }
 )(Profile);
