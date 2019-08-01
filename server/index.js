@@ -42,6 +42,7 @@ app.put('/api/posts/edit/:postId', pc.editPost);
 app.post('/api/posts', pc.savePost); 
 
 //follow endpoints
-app.get('/api/getFollowed/:id', fc.getFollowed)
+app.get('/api/getFollowed/:id', fc.getFollowed); 
+app.post('/api/follow', fc.follow); 
 
 app.listen(SERVER_PORT, () => console.log(`Listening on port ${SERVER_PORT}`)); 

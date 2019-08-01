@@ -3,6 +3,7 @@ import { Redirect, Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { getUser } from "../redux/userReducer";
 import Followed from "./Followed";
+import Header from "./Header";
 import "../styling/reset.css";
 import "../styling/dashboard.scss";
 
@@ -25,16 +26,7 @@ class Dashboard extends Component {
         </style>
 
         <div className="header-bar">
-          <div className="app-name-dash">Fitbook</div>
-          <Link to={{ pathname: "/search" }}>
-            <button className="buttons-dash">Search</button>
-          </Link>
-          <Link to={{ pathname: `/profile/${this.props.user.id}` }}>
-            <button className="buttons-dash">Profile</button>
-          </Link>
-          <Link to={{ pathname: "/create" }}>
-            <button className="buttons-dash-post">Post</button>
-          </Link>
+          <Header />
         </div>
 
         <div className="box-medium-dash">

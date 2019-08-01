@@ -1,14 +1,15 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getPosts } from "../redux/postsReducer";
-import { getUserProfile } from '../redux/userReducer'; 
+import { getUserProfile, logout, getUser } from '../redux/userReducer'; 
 import { Link } from "react-router-dom";
 import Post from './Post';
 
 class Profile extends Component {
   
   state = {
-    posts: []
+    posts: [], 
+    id: this.props.match.params.id
   };
 
   componentDidMount() {
@@ -24,6 +25,7 @@ class Profile extends Component {
   }
 
   render() {
+
     let mappedPosts = this.state.posts.map(post => {
       if(this.state.posts.length) {
         return (
@@ -49,8 +51,6 @@ class Profile extends Component {
         <div>
           Profile
           {mappedPosts}
-          {/* {this.state.posts.length ? this.state.posts[0].calories : <div>loading...</div>} */}
-    
         </div>
        </div>
     );

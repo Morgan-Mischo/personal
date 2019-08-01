@@ -1,5 +1,5 @@
 import axios from "axios";
-import { SIGNUP, LOGIN, GET_USER, GET_USERS, GET_USER_PROFILE } from "./actionTypes";
+import { SIGNUP, LOGIN, LOGOUT, GET_USER, GET_USERS, GET_USER_PROFILE } from "./actionTypes";
 
 const initialState = {
   user: {},
@@ -29,6 +29,13 @@ export const login = (username, password) => {
     payload: data
   };
 };
+
+export const logout = () => {
+  return {
+    type: LOGOUT, 
+    payload: axios.delete('/api/logout')
+  }; 
+}; 
 
 export const getUser = () => {
   console.log('hitting user reducer')
