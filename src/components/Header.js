@@ -22,6 +22,7 @@ function Header(props) {
       <button onClick={props.logout} className="button">
         Logout
       </button>
+     
     </div>
   );
 }

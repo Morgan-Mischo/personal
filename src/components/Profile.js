@@ -4,6 +4,7 @@ import { getPosts } from "../redux/postsReducer";
 import { getUserProfile, logout, getUser } from '../redux/userReducer'; 
 import { Link } from "react-router-dom";
 import Post from './Post';
+import Follow from "./Follow"; 
 
 class Profile extends Component {
   
@@ -51,6 +52,7 @@ class Profile extends Component {
         <div>
           Profile
           {mappedPosts}
+          <Follow />
         </div>
        </div>
     );

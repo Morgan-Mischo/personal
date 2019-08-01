@@ -1,14 +1,14 @@
 import React, { Component } from "react"; 
 import { connect } from "react-redux"; 
-import { getFollowed } from '../redux/followReducer'; 
+import { getFollowed, follow } from '../redux/followReducer'; 
 import Post from './Post'; 
 
 class Followed extends Component {
     constructor() {
         super(); 
         this.state = {
-            followed: []
-        }
+            followed: [], 
+        }; 
 
     }
 
