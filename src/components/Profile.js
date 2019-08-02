@@ -11,31 +11,28 @@ class Profile extends Component {
     posts: [],
     user_following: "",
     user_followed: "",
-    following: false, 
-    username: '', 
-    first_name: '', 
-    last_name: '', 
-    picture: ''
+    following: false,
+    username: "",
+    first_name: "",
+    last_name: "",
+    picture: ""
   };
 
   componentDidMount() {
     this.props.getUserProfile(this.props.match.params.id);
     this.props.getUser();
-
   }
 
   componentDidUpdate(prevProps) {
     if (prevProps.reduxState.user.posts !== this.props.reduxState.user.posts) {
       this.setState({
-        posts: this.props.reduxState.user.posts, 
-        username: this.props.reduxState.user.posts[0].username, 
+        posts: this.props.reduxState.user.posts,
+        username: this.props.reduxState.user.posts[0].username,
         first_name: this.props.reduxState.user.posts[0].first_name,
-        last_name: this.props.reduxState.user.posts[0].last_name, 
+        last_name: this.props.reduxState.user.posts[0].last_name,
         picture: this.props.reduxState.user.posts[0].picture
       });
-      console.log('now', this.props.reduxState.user.posts[0].id)
     }
-    
   }
 
   flipFollow = () => this.setState({ following: !this.state.following });
@@ -54,8 +51,7 @@ class Profile extends Component {
         return <div>User has no posts</div>;
       }
     });
-    console.log(this.state.username)
-    
+    console.log(this.state.username);
 
     return (
       <div>
@@ -77,22 +73,18 @@ class Profile extends Component {
               )}
             </div>
           ) : (
-            <div>
-              Welcome!
-            </div>
+            <div />
           )}
         </div>
 
-        <div>{mappedPosts}
-        <h1> {this.state.username} </h1>
-              <h2>
-                {this.state.first_name} 
-                {this.state.last_name}
-              </h2>
-              <img
-                src={this.state.picture}
-                alt="profile pic"
-              />
+        <div>
+          <h1> {this.state.username} </h1>
+          <h2>
+            {this.state.first_name}
+            {this.state.last_name}
+          </h2>
+          <img src={this.state.picture} alt="profile pic" />
+          {mappedPosts}
         </div>
       </div>
     );

@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { deletePost, editPost } from "../redux/postsReducer";
-import "../styling/reset.css"; 
-import "../styling/post.scss"; 
+import { deletePost, editPost, getPosts } from "../redux/postsReducer";
+import { getUser } from "../redux/userReducer";
+import "../styling/reset.css";
+import "../styling/post.scss";
 
 class Post extends Component {
   constructor(props) {
@@ -15,7 +16,8 @@ class Post extends Component {
       newWorkout: props.workout,
       newGoals: props.goals,
       newPhoto: props.photo,
-      editing: false
+      editing: false,
+      editable: false
     };
   }
 
@@ -25,6 +27,14 @@ class Post extends Component {
   };
 
   flipEdit = () => this.setState({ editing: !this.state.editing });
+
+  flipEditable = () => {
+    if (this.props.user_id == this.props.loggedIn) {
+      this.setState({
+        editable: true
+      });
+    }
+  };
 
   save = () => {
     let { id, editPost } = this.props;
@@ -54,6 +64,11 @@ class Post extends Component {
     deletePost(id);
   };
 
+  componentDidMount() {
+    this.props.getUser();
+    this.flipEditable();
+  }
+
   componentDidUpdate(prevProps) {
     let { height, weight, calories, diet, workout, goals, photo } = prevProps;
     if (
@@ -79,6 +94,9 @@ class Post extends Component {
   }
 
   render() {
+    console.log("props", this.props.loggedIn);
+    console.log("not props", this.props.user_id);
+
     let { height, weight, calories, diet, workout, goals, photo } = this.props;
     let {
       newHeight,
@@ -148,8 +166,8 @@ class Post extends Component {
           </div>
         ) : (
           <div>
-            <div className = "img-container">
-            <img className="input-photo" src={photo} alt="Loading" />
+            <div className="img-container">
+              <img className="input-photo" src={photo} alt="Loading" />
             </div>
             <p> {goals} </p>
             <p> {workout} </p>
@@ -158,12 +176,19 @@ class Post extends Component {
             <h6> {height} </h6>
             <h6> {weight} </h6>
             <div>
-              <button onClick={this.flipEdit} className="btn normal-btn">
-                Edit
-              </button>
-              <button onClick={this.delete} className="btn warning-btn">
-                Delete
-              </button>
+              {this.state.editable ? (
+                <div>
+                  <button onClick={this.flipEdit} className="btn normal-btn">
+                    Edit
+                  </button>
+
+                  <button onClick={this.delete} className="btn warning-btn">
+                    Delete
+                  </button>
+                </div>
+              ) : (
+                <div> </div>
+              )}
             </div>
           </div>
         )}
@@ -172,7 +197,11 @@ class Post extends Component {
   }
 }
 
+function mapStateToProps(state) {
+  return { loggedIn: state.user.user.id };
+}
+
 export default connect(
-  null,
-  { deletePost, editPost }
+  mapStateToProps,
+  { deletePost, editPost, getUser, getPosts }
 )(Post);

@@ -34,6 +34,7 @@ class Followed extends Component {
         
     }
     render() {
+        console.log(this.props.followed)
         let mappedPosts = this.state.followed.map(post => {
           if(this.state.followed.length) {
             return (
