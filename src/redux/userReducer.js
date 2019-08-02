@@ -1,5 +1,5 @@
 import axios from "axios";
-import { SIGNUP, LOGIN, LOGOUT, GET_USER, GET_USERS, GET_USER_PROFILE } from "./actionTypes";
+import { SIGNUP, LOGIN, LOGOUT, GET_USER, GET_USERS, GET_USER_PROFILE, GET_USER_ID } from "./actionTypes";
 
 const initialState = {
   user: {},
@@ -46,6 +46,13 @@ export const getUser = () => {
   };
 };
 
+export const getUserId = (id) => {
+  let data = axios.get("/api/user/:id").then(res => res.data);
+  return {
+    type: GET_USER_ID,
+    payload: data
+  };
+};
 export const getUsers = () => {
   let data = axios.get("/api/users").then(res => res.data); 
   return {
@@ -90,6 +97,8 @@ export default function(state = initialState, action) {
       return { ...state, user: payload, error: false }; 
       case GET_USER + '_REJECTED': 
       return { ...state, redirect: true, error: payload }; 
+      case GET_USER_ID + '_FULFILLED': 
+      return { ...state, user: payload, error: false }; 
       case GET_USERS + '_FULFILLED': 
       return { ...state, users: payload}; 
       case GET_USER_PROFILE + '_FULFILLED': 

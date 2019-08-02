@@ -10,4 +10,5 @@ export const GET_USER_PROFILE = 'GET_USER_PROFILE';
 export const GET_FOLLOWED = 'GET_FOLLOWED'; 
 export const FOLLOW = 'FOLLOW'; 
 export const MAKE_POST = 'MAKE_POST'; 
+export const GET_USER_ID = 'GET_USER_ID'; 
 

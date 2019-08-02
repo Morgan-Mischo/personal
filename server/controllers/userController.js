@@ -39,6 +39,9 @@ module.exports = {
     getUser(req, res) {
         res.send(req.session.user); 
     }, 
+    getUserId(req, res) {
+        res.send(req.session.user); 
+    }, 
 
     async getUsers(req, res) {
         const db = req.app.get('db'); 

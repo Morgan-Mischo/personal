@@ -31,7 +31,8 @@ app.use(initSession);
 app.post('/api/login', uc.login); 
 app.post('/api/signup', uc.signup); 
 app.delete('/api/logout', uc.logout); 
-app.get('/api/user', authCheck,  uc.getUser); 
+app.get('/api/user', authCheck,  uc.getUser);
+app.get('/api/user/:id', uc.getUserId);
 app.get('/api/users', uc.getUsers); 
 app.get('/api/getUserProfile/:id', uc.getUserProfile); 
 

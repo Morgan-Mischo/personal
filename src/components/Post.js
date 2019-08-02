@@ -57,6 +57,7 @@ class Post extends Component {
       newGoals,
       newPhoto
     );
+    this.flipEdit(); 
   };
 
   delete = () => {
@@ -148,7 +149,7 @@ class Post extends Component {
               name="newGoals"
               className="input-full-width"
             />
-            <img
+            <input
               value={newPhoto}
               onChange={this.handleChange}
               name="newPhoto"
@@ -169,7 +170,7 @@ class Post extends Component {
             <div className="img-container">
               <img className="input-photo" src={photo} alt="Loading" />
             </div>
-            <p> {goals} </p>
+            <p style={{background: "blue"}}> 'goals' {goals} </p>
             <p> {workout} </p>
             <h4> {diet} </h4>
             <h5> {calories} </h5>
