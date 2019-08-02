@@ -8,16 +8,15 @@
   justify-content: center; 
   .header-bar {
     align-items: center;
-    @include name(4vmax, 8vmax); 
+    @include name(4vmax); 
     .box-medium {
-      @include box(60%, 40%, 10%);
+      @include box(60%, 40%);
       align-content: center;
       .app-name-dash {
-        @include name($desktop-font-size, $margin-bottom-name);
+        @include name($desktop-font-size);
       }
       .button {
         @include main-buttons(
-          $margin-button,
           $height-button,
           $width-button,
           $button-font-size

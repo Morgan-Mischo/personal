@@ -6,13 +6,12 @@
 }
 
 .box-medium {
-  @include box(60%, 40%, 10%);
+  @include box(60%, 30%);
   .app-name {
-    @include name($desktop-font-size, $margin-bottom-name);
+    @include name($desktop-font-size);
   }
   .button {
     @include main-buttons(
-      $margin-button,
       $height-button,
       $width-button,
       $button-font-size
@@ -22,12 +21,12 @@
 
 @media screen and (max-width: 780px) {
   .display-container {
-    @include background($gray);
+    @include background($dark);
   }
   .box-medium {
-    @include box(100%, 90%, 50vmax);
+    @include box(40%, 70%);
     .app-name {
-      @include name($desktop-font-size, $margin-bottom-name);
+      @include name($desktop-font-size);
     }
   }
 }

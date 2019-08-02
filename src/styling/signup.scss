@@ -2,9 +2,6 @@
 @import "./_fitbook"; 
 
   .app-name {
-      @include name($desktop-font-size, 1vmax); 
+      @include name($desktop-font-size); 
   }
   
-.input {
-    margin-bottom: 1vmax; 
-}
