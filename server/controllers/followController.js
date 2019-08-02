@@ -11,5 +11,10 @@ module.exports = {
     const db = req.app.get("db");
     let follows = await db.add_follower([user_following, user_followed]);
     res.send(follows);
-  }
+  }, 
+  
+  logout(req, res){
+    req.session.destroy(); 
+    res.sendStatus(200); 
+}
 };

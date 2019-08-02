@@ -36,6 +36,10 @@ module.exports = {
         const db = req.app.get('db'); 
         let posts = await db.save_post([height, weight, calories, diet, workout, goals, photo, req.session.user.id]); 
         res.send(posts); 
+    }, 
+    logout(req, res){
+        req.session.destroy(); 
+        res.sendStatus(200); 
     }
     
 }

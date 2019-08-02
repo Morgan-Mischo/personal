@@ -31,6 +31,7 @@ export const login = (username, password) => {
 };
 
 export const logout = () => {
+
   return {
     type: LOGOUT, 
     payload: axios.delete('/api/logout')
@@ -93,6 +94,12 @@ export default function(state = initialState, action) {
       return { ...state, users: payload}; 
       case GET_USER_PROFILE + '_FULFILLED': 
       return { ...state, posts: payload}
+      case LOGOUT + '_FULFILLED': 
+      return {   user: {},
+      redirect: false,
+      error: false, 
+      users: [], 
+      posts: []}
     default:
       return state;
   }
