@@ -39,11 +39,12 @@ module.exports = {
     getUser(req, res) {
         res.send(req.session.user); 
     }, 
+
     async getUserId(req, res) {
        let {id} = req.params; 
        console.log('id', id)
        let userId = await req.app.get('db').get_user_by_id(+id)
-        res.status(200).send(userId); 
+        res.send(userId); 
     }, 
 
     async getUsers(req, res) {

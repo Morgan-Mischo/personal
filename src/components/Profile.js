@@ -15,28 +15,34 @@ class Profile extends Component {
     username: "",
     first_name: "",
     last_name: "",
-    picture: ""
+    picture: "", 
+    user: []
   };
 
   componentDidMount() {
     this.props.getUserProfile(this.props.match.params.id);
     this.props.getUser();
-    this.props.getUserId(this.props.match.params.id) 
+    console.log('hi', this.props.getUserId(this.props.match.params.id) )
   }
 
   componentDidUpdate(prevProps) {
     if (prevProps.reduxState.user.posts !== this.props.reduxState.user.posts) {
       console.log('look', this.props.getUserId(this.props.match.params.id))
       this.setState({
-        
         posts: this.props.reduxState.user.posts,
-        username: this.props.reduxState.user.posts[0].username,
+        username: this.props.username,
         first_name: this.props.reduxState.user.posts[0].first_name,
         last_name: this.props.reduxState.user.posts[0].last_name,
         picture: this.props.reduxState.user.posts[0].picture
       });
     }
-   
+    console.log('hi there', prevProps.reduxState.user.user[0])
+    
+    if (prevProps.reduxState.user.user[0] !== this.props.reduxState.user.user[0]) {
+    this.setState({
+      user: prevProps.reduxState.user.user[0]
+    })
+  }
   }
 
   flipFollow = () => this.setState({ following: !this.state.following });
@@ -47,6 +53,8 @@ class Profile extends Component {
   };
 
   render() {
+    console.log('state', this.username)
+    // console.log('username',this.props.getUserId(this.props.match.params.id) )
     let { user_following, user_followed, following } = this.state;
     let mappedPosts = this.state.posts.map(post => {
       if (this.state.posts.length) {
@@ -82,12 +90,12 @@ class Profile extends Component {
         </div>
 
         <div>
-          <h1> {this.state.username} </h1>
+          <h1> {this.props.username} </h1>
           <h2>
-            {this.state.first_name}
-            {this.state.last_name}
+            {this.props.first_name}
+            {this.props.last_name}
           </h2>
-          <img src={this.state.picture} alt="profile pic" />
+          <img src={this.props.picture} alt="profile pic" />
           {mappedPosts}
         </div>
       </div>
@@ -96,7 +104,9 @@ class Profile extends Component {
 }
 
 function mapStateToProps(state) {
-  return { reduxState: state, id: state.user.user.id, profile: state.user.user.username };
+  return { reduxState: state, id: state.user.user.id, 
+    username: state.user.user.username, first_name: state.user.user.first_name, 
+    picture: state.user.user.picture, last_name: state.user.user.last_name };
 }
 
 export default connect(

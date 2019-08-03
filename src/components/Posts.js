@@ -13,6 +13,7 @@ class Posts extends Component {
     }
 
     render(){
+        console.log('posts', this.props.posts)
         let { posts } = this.props; 
         return(
             <div>
