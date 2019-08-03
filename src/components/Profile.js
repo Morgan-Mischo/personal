@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getPosts } from "../redux/postsReducer";
-import { getUserProfile, getUser } from "../redux/userReducer";
+import { getUserProfile, getUser, getUserId } from "../redux/userReducer";
 import { follow } from "../redux/followReducer";
 import { Link } from "react-router-dom";
 import Post from "./Post";
@@ -21,11 +21,14 @@ class Profile extends Component {
   componentDidMount() {
     this.props.getUserProfile(this.props.match.params.id);
     this.props.getUser();
+    this.props.getUserId(this.props.match.params.id) 
   }
 
   componentDidUpdate(prevProps) {
     if (prevProps.reduxState.user.posts !== this.props.reduxState.user.posts) {
+      console.log('look', this.props.getUserId(this.props.match.params.id))
       this.setState({
+        
         posts: this.props.reduxState.user.posts,
         username: this.props.reduxState.user.posts[0].username,
         first_name: this.props.reduxState.user.posts[0].first_name,
@@ -33,6 +36,7 @@ class Profile extends Component {
         picture: this.props.reduxState.user.posts[0].picture
       });
     }
+   
   }
 
   flipFollow = () => this.setState({ following: !this.state.following });
@@ -92,10 +96,10 @@ class Profile extends Component {
 }
 
 function mapStateToProps(state) {
-  return { reduxState: state, id: state.user.user.id };
+  return { reduxState: state, id: state.user.user.id, profile: state.user.user.username };
 }
 
 export default connect(
   mapStateToProps,
-  { getPosts, getUserProfile, getUser, follow }
+  { getPosts, getUserProfile, getUser, follow, getUserId }
 )(Profile);

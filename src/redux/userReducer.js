@@ -47,12 +47,13 @@ export const getUser = () => {
 };
 
 export const getUserId = (id) => {
-  let data = axios.get("/api/user/:id").then(res => res.data);
+  let data = axios.get(`/api/user/${id}`).then(res => res.data);
   return {
     type: GET_USER_ID,
     payload: data
   };
 };
+
 export const getUsers = () => {
   let data = axios.get("/api/users").then(res => res.data); 
   return {
