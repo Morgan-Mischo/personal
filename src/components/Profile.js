@@ -99,6 +99,7 @@ class Profile extends Component {
           {mappedPosts}
         </div>
       </div>
+      
     );
   }
 }
