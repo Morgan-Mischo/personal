@@ -6,8 +6,11 @@ const initialState = {
   redirect: false,
   error: false, 
   users: [], 
-  posts: []
+  posts: [], 
+  userId: {}
 };
+
+
 
 export const signup = (username, password, first_name, last_name, email, picture) => {
   let data = axios
@@ -94,21 +97,24 @@ export default function(state = initialState, action) {
       case GET_USER + '_PENDING': 
       return { ...state, redirect: false, error: false };
       case GET_USER + '_FULFILLED': 
-      return { ...state, user: payload, error: false }; 
+      return { ...state, user: {...payload}, error: false }; 
       case GET_USER + '_REJECTED': 
       return { ...state, redirect: true, error: payload }; 
       case GET_USER_ID + '_FULFILLED': 
-      return { ...state, user: payload, error: false }; 
+      return { ...state, userId: {...payload}, error: false }; 
+      case GET_USER_ID + '_PENDING': 
+      return { ...state, redirect: false, error: false };
       case GET_USERS + '_FULFILLED': 
       return { ...state, users: payload}; 
       case GET_USER_PROFILE + '_FULFILLED': 
       return { ...state, posts: payload}
       case LOGOUT + '_FULFILLED': 
-      return {   user: {},
+      return {  ...state, user: {},
       redirect: false,
       error: false, 
       users: [], 
-      posts: []}
+      posts: [], 
+      userId: {}}
     default:
       return state;
   }

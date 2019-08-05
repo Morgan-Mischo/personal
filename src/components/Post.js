@@ -95,8 +95,6 @@ class Post extends Component {
   }
 
   render() {
-    console.log("props", this.props.loggedIn);
-    console.log("not props", this.props.user_id);
 
     let { height, weight, calories, diet, workout, goals, photo } = this.props;
     let {

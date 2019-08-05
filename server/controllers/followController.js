@@ -13,7 +13,7 @@ module.exports = {
     res.send(follows);
   }, 
   
-  logout(req, res){
+   async logout(req, res){
     req.session.destroy(); 
     res.sendStatus(200); 
 }

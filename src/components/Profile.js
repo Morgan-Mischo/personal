@@ -5,6 +5,7 @@ import { getUserProfile, getUser, getUserId } from "../redux/userReducer";
 import { follow } from "../redux/followReducer";
 import { Link } from "react-router-dom";
 import Post from "./Post";
+import { isFulfilled } from "q";
 
 class Profile extends Component {
   state = {
@@ -22,21 +23,22 @@ class Profile extends Component {
   componentDidMount() {
     this.props.getUserProfile(this.props.match.params.id);
     this.props.getUser();
-    console.log('hi', this.props.getUserId(this.props.match.params.id) )
+    this.props.getUserId(this.props.match.params.id)
+    
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.reduxState.user.posts !== this.props.reduxState.user.posts) {
-      console.log('look', this.props.getUserId(this.props.match.params.id))
+ 
+    if (prevProps !== this.props) {
       this.setState({
         posts: this.props.reduxState.user.posts,
-        username: this.props.username,
-        first_name: this.props.reduxState.user.posts[0].first_name,
-        last_name: this.props.reduxState.user.posts[0].last_name,
-        picture: this.props.reduxState.user.posts[0].picture
+        username: this.props.reduxState.user.userId[0].username, 
+        first_name: this.props.reduxState.user.userId[0].first_name,
+        last_name: this.props.reduxState.user.userId[0].last_name,
+        picture: this.props.reduxState.user.userId[0].picture
       });
     }
-    console.log('hi there', prevProps.reduxState.user.user[0])
+
     
     if (prevProps.reduxState.user.user[0] !== this.props.reduxState.user.user[0]) {
     this.setState({
@@ -53,9 +55,9 @@ class Profile extends Component {
   };
 
   render() {
-    console.log('state', this.username)
-    // console.log('username',this.props.getUserId(this.props.match.params.id) )
-    let { user_following, user_followed, following } = this.state;
+    
+  
+    let { following } = this.state;
     let mappedPosts = this.state.posts.map(post => {
       if (this.state.posts.length) {
         return <Post key={post.id} {...post} />;
@@ -63,7 +65,7 @@ class Profile extends Component {
         return <div>User has no posts</div>;
       }
     });
-    console.log(this.state.username);
+ 
 
     return (
       <div>
@@ -90,13 +92,20 @@ class Profile extends Component {
         </div>
 
         <div>
-          <h1> {this.props.username} </h1>
+          {this.props.reduxState !== isFulfilled ? (
+            <div className="return">
+                        <h1> {this.state.username} </h1>
           <h2>
-            {this.props.first_name}
-            {this.props.last_name}
+            {this.state.first_name}
+            {this.state.last_name}
           </h2>
-          <img src={this.props.picture} alt="profile pic" />
+          <img src={this.state.picture} alt="profile pic" />
           {mappedPosts}
+            </div>
+          ) : (
+            <div> Loading </div>
+          )}
+
         </div>
       </div>
       

@@ -31,7 +31,7 @@ module.exports = {
         res.send(req.session.user); 
     }, 
 
-    logout(req, res){
+    async logout(req, res){
         req.session.destroy(); 
         res.sendStatus(200); 
     }, 
@@ -42,7 +42,6 @@ module.exports = {
 
     async getUserId(req, res) {
        let {id} = req.params; 
-       console.log('id', id)
        let userId = await req.app.get('db').get_user_by_id(+id)
         res.send(userId); 
     }, 
