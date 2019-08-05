@@ -2,6 +2,7 @@ require ('dotenv').config({path: __dirname + '/../.env'});
 const express = require('express'); 
 const massive = require('massive'); 
 const session = require('express-session'); 
+const path = require('path'); 
 
 const uc = require('./controllers/userController'); 
 const pc = require('./controllers/postsController'); 
@@ -25,7 +26,11 @@ app.use(
 
 massive(CONNECTION_STRING).then(db => app.set('db', db)); 
 
-app.use(initSession); 
+app.use(express.static(__dirname + '/../build'));
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../build.index.html')); 
+})
 
 //user endpoints
 app.post('/api/login', uc.login); 
