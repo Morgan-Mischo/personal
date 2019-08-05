@@ -166,17 +166,21 @@ class Post extends Component {
             </div>
           </div>
         ) : (
-          <div>
+          <div className='posts-container' >
+          
             <div className="img-container">
               <img className="input-photo" src={photo} alt="Loading" />
-            </div>
+            
             <p style={{background: "blue"}}> 'goals' {goals} </p>
             <p> {workout} </p>
             <h4> {diet} </h4>
             <h5> {calories} </h5>
             <h6> {height} </h6>
             <h6> {weight} </h6>
+            </div>
+           
             <div>
+
               {this.state.editable ? (
                 <div>
                   <button onClick={this.flipEdit} className="btn normal-btn">
@@ -194,6 +198,7 @@ class Post extends Component {
           </div>
         )}
       </div>
+      
     );
   }
 }
