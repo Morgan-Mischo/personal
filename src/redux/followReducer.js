@@ -26,9 +26,9 @@ export function follow(user_following, user_followed) {
 }
 
 export const logout = () => {
+  axios.delete('/api/logout').then(res => console.log(res.data)).catch(err => alert(err))
   return {
-    type: LOGOUT, 
-    payload: axios.delete('/api/logout')
+    type: LOGOUT
   }; 
 };
 

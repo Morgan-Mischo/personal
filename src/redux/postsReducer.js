@@ -78,10 +78,9 @@ export function savePost(
 }
 
 export const logout = () => {
-
+  axios.delete('/api/logout').then(res => console.log(res.data)).catch(err => alert(err))
   return {
-    type: LOGOUT, 
-    payload: axios.delete('/api/logout')
+    type: LOGOUT
   }; 
 }; 
 
