@@ -37,7 +37,7 @@ module.exports = {
         let posts = await db.save_post([height, weight, calories, diet, workout, goals, photo, req.session.user.id]); 
         res.send(posts); 
     }, 
-     async logout(req, res){
+     async logoutPost(req, res){
         req.session.destroy(); 
         res.sendStatus(200); 
     }

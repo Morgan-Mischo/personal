@@ -108,13 +108,15 @@ export default function(state = initialState, action) {
       return { ...state, users: payload}; 
       case GET_USER_PROFILE + '_FULFILLED': 
       return { ...state, posts: payload}
-      case LOGOUT + '_FULFILLED': 
+      case LOGOUT: 
       return {  ...state, user: {},
       redirect: false,
       error: false, 
       users: [], 
       posts: [], 
-      userId: {}}
+      userId: {},
+
+    }
     default:
       return state;
   }

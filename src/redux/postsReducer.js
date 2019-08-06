@@ -77,7 +77,7 @@ export function savePost(
   };
 }
 
-export const logout = () => {
+export const logoutPost = () => {
   axios.delete('/api/logout').then(res => console.log(res.data)).catch(err => alert(err))
   return {
     type: LOGOUT_POST
@@ -97,7 +97,7 @@ export default function postsReducer(state = initialState, action) {
       return { ...state, posts: payload };
     case EDIT_POST + "_FULFILLED":
       return { ...state, posts: payload };
-      case LOGOUT_POST + '_FULFILLED': 
+      case LOGOUT_POST : 
       return {     posts: [],
         error: false}
     default:

@@ -25,7 +25,7 @@ export function follow(user_following, user_followed) {
   };
 }
 
-export const logout = () => {
+export const logoutFollow = () => {
   axios.delete('/api/logout').then(res => console.log(res.data)).catch(err => alert(err))
   return {
     type: LOGOUT_FOLLOW
@@ -39,7 +39,7 @@ export default function(state = initialState, action) {
       return { ...state, followed: payload, error: false };
     case FOLLOW + "_FULFILLED":
       return { ...state, followed: payload, error: false };
-      case LOGOUT_FOLLOW + '_FULFILLED': 
+      case LOGOUT_FOLLOW : 
       return {   followed: []}
     default:
       return state;

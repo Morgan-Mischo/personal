@@ -30,7 +30,7 @@ massive(CONNECTION_STRING).then(db => app.set('db', db));
 //user endpoints
 app.post('/api/login', uc.login); 
 app.post('/api/signup', uc.signup); 
-app.delete('/api/logout', uc.logout); 
+app.delete('/api/logout', uc.logout, pc.logoutPost, fc.logoutFollow); 
 app.get('/api/user', authCheck,  uc.getUser);
 app.get('/api/user/:id', uc.getUserId);
 app.get('/api/users', uc.getUsers); 
@@ -41,12 +41,12 @@ app.get('/api/posts/:id', pc.getPosts);
 app.delete('/api/posts/:postId', pc.deletePost); 
 app.put('/api/posts/edit/:postId', pc.editPost); 
 app.post('/api/posts', pc.savePost);
-app.delete('/api/logout', pc.logout); 
+
 
 //follow endpoints
 app.get('/api/getFollowed/:id', fc.getFollowed); 
 app.post('/api/follow', fc.follow); 
-app.delete('/api/logout', fc.logout); 
+
 
 app.listen(SERVER_PORT, () => console.log(`Listening on port ${SERVER_PORT}`)); 
 
