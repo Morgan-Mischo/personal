@@ -5,14 +5,23 @@
     @include background(white, 100%, 100%);
     display: flex; 
     flex-direction: column;  
-    justify-content: left; 
 
     .header-bar {
         @include header-bar(); 
         @include name(3vmax); 
     }
 
-    .search-bar {
-        justify-content: left; 
+    .searching {
+        
+         width: 30vw;
+         height: 5vh; 
+         font-size: 100%; 
+
+    }
+    .results {
+        text-decoration: none; 
+        color: black; 
+        font-family: $font; 
+        
     }
 }
