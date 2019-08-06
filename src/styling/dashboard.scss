@@ -9,9 +9,10 @@
   .header-bar {
     align-items: center;
     @include name(4vmax); 
-    .box-medium {
+    .box-medium-dash {
       @include box(60%, 40%);
       align-content: center;
+      
       .app-name-dash {
         @include name($desktop-font-size);
       }
@@ -27,4 +28,13 @@
   .box-medium-dash {
     align-items: center; 
   }
+  @media screen and (max-width: 780px){
+    .box-medium-dash {
+      @include box(70%, 100%); 
+      flex-wrap: wrap; 
+      word-wrap: break-word; 
+      border-radius: 0; 
+    }
+  }
 }
+
