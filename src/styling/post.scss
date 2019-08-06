@@ -24,6 +24,18 @@ margin: 1vmax;
     font-weight: bold; 
 }
 
+.edit {
+display: flex; 
+justify-content: space-around; 
+}
+
+.btn {
+    font-family: $font; 
+    font-size: 100%; 
+    background-color: $white; 
+    border-color: #011936; 
+}
+
 
 @media screen and (max-width: 780px){
     .post-container {

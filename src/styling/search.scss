@@ -1,0 +1,18 @@
+@import "./_background"; 
+@import "./_fitbook"; 
+
+.search {
+    @include background(white, 100%, 100%);
+    display: flex; 
+    flex-direction: column;  
+    justify-content: left; 
+
+    .header-bar {
+        @include header-bar(); 
+        @include name(3vmax); 
+    }
+
+    .search-bar {
+        justify-content: left; 
+    }
+}

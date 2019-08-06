@@ -12,11 +12,34 @@
     @include header-bar(); 
     @include name(3vmax); 
 }
-.names-and-goals {
+.just-names {
         display: flex; 
     flex-direction: row;
          align-items: center;
-  justify-content: center; 
+  justify-content: space-around; 
+
+  .img-container {
+    height: 250px; 
+    width: auto; 
+    margin: 0; 
+    border-radius: 50%; 
+  }
+  .username {
+    font-family: $font; 
+    font-size: 100%; 
+    margin-bottom: 1vmax; 
+    margin-top: 1vmax; 
+  }
+  .names {
+    font-family: $font; 
+    font-size: 100%; 
+  }
+  .follow-button {
+    font-family: $font; 
+    font-size: 100%; 
+    background-color: $white; 
+    border-color: #011936; 
+  }
 }
 }
 

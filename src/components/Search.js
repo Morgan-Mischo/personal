@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import { getUsers } from "../redux/userReducer";
 import Suggestions from "./Suggestions";
 import { Link } from "react-router-dom";
+import Header from "./Header"; 
+import "../styling/search.scss"; 
 
 //redo this with vanilla js
 
@@ -58,14 +60,14 @@ class Search extends Component {
 
   render() {
     return (
-      <div>
-        <Link to={{ pathname: "/" }}>
-          <button className="btn normal-btn">Fitbook</button>
-        </Link>
+        <div className="search">
+                <div className="header-bar">
+          <Header />
+        </div>
 
 
-        <form>
-          <input
+        <form className="search-bar">
+          <input className="searching"
             placeholder="Search for..."
             ref={input => (this.search = input)}
             onChange={this.handleInputChange}

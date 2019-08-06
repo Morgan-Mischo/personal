@@ -176,15 +176,15 @@ class Post extends Component {
             <p className="post-style"> <span className='bold'>Weight</span> {weight} </p>
             </div>
            
-            <div>
+            <div >
 
               {this.state.editable ? (
-                <div>
-                  <button onClick={this.flipEdit} className="btn normal-btn">
+                <div className="edit">
+                  <button onClick={this.flipEdit} className="btn">
                     Edit
                   </button>
 
-                  <button onClick={this.delete} className="btn warning-btn">
+                  <button onClick={this.delete} className="btn">
                     Delete
                   </button>
                 </div>

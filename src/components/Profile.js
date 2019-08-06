@@ -82,7 +82,16 @@ class Profile extends Component {
           <Header />
         </div>
 
-        <div className="following">
+
+
+        <div className= "names">
+          {this.props.reduxState !== isFulfilled ? (
+            <div className = "names-and-pictures">
+              <div className = "just-names">
+
+              <img src={this.state.picture} alt="profile pic" className="img-container"/>
+              <div className = "names-username">
+              <div className="following">
           {this.props.id != this.props.match.params.id ? (
             <div className="following">
               {following ? (
@@ -99,15 +108,16 @@ class Profile extends Component {
             <div />
           )}
         </div>
-
-        <div className= "names">
-          {this.props.reduxState !== isFulfilled ? (
-            <div className = "names-and-pictures">
-              <img src={this.state.picture} alt="profile pic" />
+              <div className = 'username'>
           {this.state.username} {" "}
-          <div className = 'name'>
+          </div>
+
+          <div className="names">
             {this.state.first_name} {" "}
             {this.state.last_name}
+            </div>
+            
+            </div>
             </div>
             
           
