@@ -21,6 +21,7 @@ class Followed extends Component {
             this.setState({
                 id: this.props.id
             })
+            
     }
 
 

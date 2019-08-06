@@ -35,7 +35,7 @@ class Dashboard extends Component {
           <Header />
         </div>
 
-        <div className="box-medium-dash">
+        <div className="box-medium-dash-1">
           <Followed />
         </div>
       </div>

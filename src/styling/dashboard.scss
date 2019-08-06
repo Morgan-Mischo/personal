@@ -17,14 +17,17 @@
     top: 0;
     background-color: $white; 
     @include name(4vmax); 
-    .box-medium-dash {
+    .box-medium-dash-1 {
       @include box(60%, 40%);
-      align-content: center;
+      display: flex; 
+      justify-content: center; 
+      align-items: center; 
+      margin: 0; 
       
       .app-name-dash {
         @include name($desktop-font-size);
       }
-      .button {
+      .buttons {
         @include main-buttons(
           $height-button,
           $width-button,
