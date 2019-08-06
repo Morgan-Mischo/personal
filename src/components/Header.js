@@ -10,7 +10,7 @@ function Header(props) {
 
   return (
     <div className="header">
-              <Link to={{ pathname: "/" }}>
+              <Link to={{ pathname: "/" }} className="app-name">
           <button className="app-name">Fitbook</button>
         </Link>
       <div className="buttons-bar">

@@ -6,6 +6,8 @@ import { follow } from "../redux/followReducer";
 import { Link } from "react-router-dom";
 import Post from "./Post";
 import { isFulfilled } from "q";
+import Header from "./Header"; 
+import "../styling/profile.scss"
 
 class Profile extends Component {
   state = {
@@ -75,12 +77,12 @@ class Profile extends Component {
     return (
 
       
-      <div>
-        <Link to={{ pathname: "/" }}>
-          <button className="btn normal-btn">Fitbook</button>
-        </Link>
+      <div className="profile">
+                <div className="header-bar">
+          <Header />
+        </div>
 
-        <div>
+        <div className="following">
           {this.props.id != this.props.match.params.id ? (
             <div className="following">
               {following ? (
@@ -98,16 +100,20 @@ class Profile extends Component {
           )}
         </div>
 
-        <div>
+        <div className= "names">
           {this.props.reduxState !== isFulfilled ? (
-            <div className="return">
-                        <h1> {this.state.username} </h1>
-          <h2>
-            {this.state.first_name}
+            <div className = "names-and-pictures">
+              <img src={this.state.picture} alt="profile pic" />
+          {this.state.username} {" "}
+          <div className = 'name'>
+            {this.state.first_name} {" "}
             {this.state.last_name}
-          </h2>
-          <img src={this.state.picture} alt="profile pic" />
+            </div>
+            
+          
+          <div className="posts">
           {mappedPosts}
+            </div>
             </div>
           ) : (
             <div> Loading </div>
