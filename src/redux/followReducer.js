@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_FOLLOWED, FOLLOW, LOGOUT } from "./actionTypes";
+import { GET_FOLLOWED, FOLLOW, LOGOUT_FOLLOW } from "./actionTypes";
 
 const initialState = {
   followed: []
@@ -28,7 +28,7 @@ export function follow(user_following, user_followed) {
 export const logout = () => {
   axios.delete('/api/logout').then(res => console.log(res.data)).catch(err => alert(err))
   return {
-    type: LOGOUT
+    type: LOGOUT_FOLLOW
   }; 
 };
 
@@ -39,7 +39,7 @@ export default function(state = initialState, action) {
       return { ...state, followed: payload, error: false };
     case FOLLOW + "_FULFILLED":
       return { ...state, followed: payload, error: false };
-      case LOGOUT + '_FULFILLED': 
+      case LOGOUT_FOLLOW + '_FULFILLED': 
       return {   followed: []}
     default:
       return state;

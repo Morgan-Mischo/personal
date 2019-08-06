@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_POSTS, DELETE_POST, EDIT_POST, MAKE_POST, LOGOUT } from "./actionTypes";
+import { GET_POSTS, DELETE_POST, EDIT_POST, MAKE_POST, LOGOUT_POST } from "./actionTypes";
 
 const initialState = {
   posts: [],
@@ -80,7 +80,7 @@ export function savePost(
 export const logout = () => {
   axios.delete('/api/logout').then(res => console.log(res.data)).catch(err => alert(err))
   return {
-    type: LOGOUT
+    type: LOGOUT_POST
   }; 
 }; 
 
@@ -97,7 +97,7 @@ export default function postsReducer(state = initialState, action) {
       return { ...state, posts: payload };
     case EDIT_POST + "_FULFILLED":
       return { ...state, posts: payload };
-      case LOGOUT + '_FULFILLED': 
+      case LOGOUT_POST + '_FULFILLED': 
       return {     posts: [],
         error: false}
     default:
