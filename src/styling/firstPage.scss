@@ -2,7 +2,7 @@
 @import "./_fitbook";
 
 .display-container {
-  @include background($dark);
+  @include background($dark, 100vh, 100vw);
 }
 
 .box-medium {
@@ -21,7 +21,7 @@
 
 @media screen and (max-width: 780px) {
   .display-container {
-    @include background($dark);
+    @include background($dark, 100vh, 100vw);
   }
   .box-medium {
     @include box(40%, 70%);

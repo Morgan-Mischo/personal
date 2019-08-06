@@ -110,7 +110,7 @@ class Post extends Component {
     return (
       <div className="post-container">
         {editing ? (
-          <div>
+          <div className="editing">
             <input
               value={newHeight}
               onChange={this.handleChange}

@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { getFollowed, follow } from '../redux/followReducer'; 
 import Post from './Post'; 
 import Profile from './Profile'; 
+import '../styling/followed.scss'
 
 class Followed extends Component {
     constructor() {
@@ -48,7 +49,7 @@ class Followed extends Component {
         }
         )
     return (
-        <div>{mappedPosts}
+        <div className="mapped">{mappedPosts}
         </div>
     )
 }

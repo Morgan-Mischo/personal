@@ -1,12 +1,12 @@
 @import './variable'; 
 
-@mixin background($background-color) {
-    width: 100%; 
+@mixin background($background-color, $height, $width) {
+    width: $width; 
     background-color: $background-color; 
     display: flex; 
     justify-content: center; 
     align-items: center; 
-    height: 100%; 
+    height: $height; 
  
 }
 

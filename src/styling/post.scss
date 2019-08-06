@@ -1,13 +1,9 @@
 @import "./_background"; 
 @import "./_fitbook"; 
 
-.post-container {
-   
-}
-
 .post-style{
 font-family: $font; 
-
+font-size: 90%; 
 }
 
 .img-container {
@@ -23,13 +19,14 @@ font-family: $font;
     height: 50%;
 }
 
-.input-full-width {
-color: pink; 
-}
 
 @media screen and (max-width: 780px){
     .post-container {
-        width: 40%; 
+        width: 100%; 
         height: 70%;
+        margin-bottom: 10%; 
+    }
+    .post-style {
+        font-size: 80%; 
     }
 }
