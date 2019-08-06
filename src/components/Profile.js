@@ -23,21 +23,25 @@ class Profile extends Component {
   componentDidMount() {
     this.props.getUserProfile(this.props.match.params.id);
     this.props.getUser();
-    this.props.getUserId(this.props.match.params.id)
-    
+    this.props.getUserId(this.props.match.params.id); 
   }
 
   componentDidUpdate(prevProps) {
- 
     if (prevProps !== this.props) {
+      if(this.props.reduxState.user.userId[0]){
       this.setState({
-        posts: this.props.reduxState.user.posts,
         username: this.props.reduxState.user.userId[0].username, 
         first_name: this.props.reduxState.user.userId[0].first_name,
         last_name: this.props.reduxState.user.userId[0].last_name,
         picture: this.props.reduxState.user.userId[0].picture
       });
     }
+    if(this.props.reduxState.user.posts){
+      this.setState({
+      posts: this.props.reduxState.user.posts
+    })
+    }
+  }
 
     
     if (prevProps.reduxState.user.user[0] !== this.props.reduxState.user.user[0]) {
@@ -66,8 +70,11 @@ class Profile extends Component {
       }
     });
  
-
+    if(this.props.reduxState.user)
+    {
     return (
+
+      
       <div>
         <Link to={{ pathname: "/" }}>
           <button className="btn normal-btn">Fitbook</button>
@@ -110,9 +117,16 @@ class Profile extends Component {
       </div>
       
     );
+
+  }
+  else {
+    return (
+      <div>Loading</div>
+    )
   }
 }
 
+}
 function mapStateToProps(state) {
   return { reduxState: state, id: state.user.user.id, 
     username: state.user.user.username, first_name: state.user.user.first_name, 

@@ -1,7 +1,7 @@
 @import './variable'; 
 
 @mixin name($font-size) {
-    font-family: 'Raleway', sans-serif;
+    font-family: $font;
     font-size: $font-size; 
     color: #6200B3; 
     display: flex; 

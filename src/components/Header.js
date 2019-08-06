@@ -4,26 +4,29 @@ import { logout } from "../redux/userReducer";
 import { Link } from "react-router-dom";
 import { getUser } from "../redux/userReducer";
 import Followed from "./Followed";
+import '../styling/header.scss'; 
 
 function Header(props) {
 
   return (
     <div className="header">
-      <div className="app-name-dash">Fitbook</div>
+      <div className="app-name">Fitbook</div>
+      <div className="buttons-bar">
       <Link to={{ pathname: "/search" }}>
-        <button className="buttons-dash">Search</button>
+        <button className="buttons">Search</button>
       </Link>
       <Link to={{ pathname: `/profile/${props.user.id}` }}>
-        <button className="buttons-dash">Profile</button>
+        <button className="buttons">Profile</button>
       </Link>
       <Link to={{ pathname: "/create" }}>
-        <button className="buttons-dash-post">Post</button>
+        <button className="buttons">Post</button>
       </Link>
       <Link to={{ pathname: "/firstpage" }}>
-      <button onClick={props.logout} className="button">
+      <button onClick={props.logout} className="buttons">
         Logout
       </button>
       </Link>
+      </div>
      
     </div>
   );
