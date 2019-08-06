@@ -168,12 +168,12 @@ class Post extends Component {
           
             <div className="img-container">
               <img className="input-photo" src={photo} alt="Loading" />  
-            <p className="post-style"> 'goals' {goals} </p>
-            <p className="post-style"> {workout} </p>
-            <h4 className="post-style"> {diet} </h4>
-            <h5 className="post-style"> {calories} </h5>
-            <h6 className="post-style"> {height} </h6>
-            <h6 className="post-style"> {weight} </h6>
+            <p className="post-style"> <span className='bold'>Goals</span> {goals} </p>
+            <p className="post-style"> <span className='bold'>Workout</span> {workout} </p>
+            <p className="post-style"> <span className='bold'>Diet</span> {diet} </p>
+            <p className="post-style"> <span className='bold'>Calories</span> {calories} </p>
+            <p className="post-style"> <span className='bold'>Height</span> {height} </p>
+            <p className="post-style"> <span className='bold'>Weight</span> {weight} </p>
             </div>
            
             <div>

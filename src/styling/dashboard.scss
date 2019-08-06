@@ -16,7 +16,7 @@
     position: sticky;
     top: 0;
     background-color: $white; 
-    @include name(4vmax); 
+    @include name(3vmax); 
     .box-medium-dash-1 {
       @include box(60%, 40%);
       display: flex; 
