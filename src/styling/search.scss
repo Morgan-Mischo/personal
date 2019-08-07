@@ -12,16 +12,18 @@
     }
 
     .searching {
-        
+  
          width: 30vw;
          height: 5vh; 
          font-size: 100%; 
-
     }
     .results {
         text-decoration: none; 
         color: black; 
         font-family: $font; 
-        
+        margin-top: 10vh; 
+    }
+    .results:hover{
+        color: #69FFF1; 
     }
 }

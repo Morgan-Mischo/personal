@@ -95,7 +95,7 @@ class Post extends Component {
   }
 
   render() {
-    console.log(this.props)
+    console.log(this.state.newCalories)
     let { height, weight, calories, diet, workout, goals, photo } = this.props;
     let {
       newHeight,
@@ -111,43 +111,43 @@ class Post extends Component {
       <div className="post-container">
         {editing ? (
           <div className="editing">
-            <input
+            Height: <input
               value={newHeight}
               onChange={this.handleChange}
               name="newHeight"
               className="input-full-width"
             />
-            <input
+            Weight: <input
               value={newWeight}
               onChange={this.handleChange}
               name="newWeight"
               className="input-full-width"
             />
-            <input
+            Calories: <input
               value={newCalories}
               onChange={this.handleChange}
               name="newCalories"
               className="input-full-width"
             />
-            <textarea
+            Diet: <textarea
               value={newDiet}
               onChange={this.handleChange}
               name="newDiet"
               className="input-full-width"
             />
-            <textarea
+            Workout: <textarea
               value={newWorkout}
               onChange={this.handleChange}
               name="newWorkout"
               className="input-full-width"
             />
-            <textarea
+            Goals: <textarea
               value={newGoals}
               onChange={this.handleChange}
               name="newGoals"
               className="input-full-width"
             />
-            <input
+            Photo: <input
               value={newPhoto}
               onChange={this.handleChange}
               name="newPhoto"
@@ -155,10 +155,10 @@ class Post extends Component {
               alt="Loading"
             />
             <div>
-              <button onClick={this.flipEdit} className="btn warning-btn">
+              <button onClick={this.flipEdit} className="btn">
                 Cancel
               </button>
-              <button onClick={this.save} className="btn normal-btn">
+              <button onClick={this.save} className="btn">
                 Save
               </button>
             </div>

@@ -36,6 +36,21 @@ justify-content: space-around;
     border-color: #011936; 
 }
 
+.btn:hover{
+    background-color: #69FFF1; 
+}
+
+.editing{
+    display: flex; 
+    flex-direction: column; 
+    font-family: $font; 
+font-size: 90%; 
+margin: 1vmax; 
+.input-full-width{
+    margin: 1vmax; 
+}
+}
+
 
 @media screen and (max-width: 780px){
     .post-container {
