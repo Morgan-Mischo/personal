@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { savePost } from "../redux/postsReducer";
 import {  Link } from 'react-router-dom'; 
-
+import "../styling/create.scss"
+import Header from "./Header"
 class Create extends Component {
   constructor() {
     super();
@@ -38,7 +39,10 @@ class Create extends Component {
   render() {
     let { height, weight, calories, diet, workout, goals, photo } = this.state;
     return (
-      <div className="display-container">
+      <div className="display-container-create">
+        <div className='header'>
+        <Header />
+        </div>
         <div className="input-row">
           Height:{" "}
           <input

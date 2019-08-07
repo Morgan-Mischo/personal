@@ -108,7 +108,7 @@ class Post extends Component {
       editing
     } = this.state;
     return (
-      <div className="post-container">
+      <div className="post-container-div">
         {editing ? (
           <div className="editing">
             Height: <input
